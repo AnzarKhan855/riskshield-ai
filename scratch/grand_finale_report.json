@@ -1,0 +1,425 @@
+{
+  "pages": {
+    "Landing Page": {
+      "url": "http://localhost:3000",
+      "actions": [
+        "Verified Hero, Navigation, CTA, and responsive grid"
+      ],
+      "buttons_clicked": 1,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 683.44,
+      "screenshots": [
+        "01_landing_page.png"
+      ],
+      "status": "PASS"
+    },
+    "Signup Page": {
+      "url": "http://localhost:3000/signup",
+      "actions": [
+        "Tested signup form inputs and client validation"
+      ],
+      "buttons_clicked": 0,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 390.88,
+      "screenshots": [
+        "02_signup_page.png"
+      ],
+      "status": "PASS"
+    },
+    "Forgot Password": {
+      "url": "http://localhost:3000/forgot-password",
+      "actions": [
+        "Tested recovery email submission"
+      ],
+      "buttons_clicked": 1,
+      "forms_submitted": 1,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 431.37,
+      "screenshots": [
+        "03_forgot_password.png"
+      ],
+      "status": "PASS"
+    },
+    "Login Page": {
+      "url": "http://localhost:3000/login",
+      "actions": [
+        "Verified 401 response on invalid credentials",
+        "Verified SQLi & XSS payload rejection by validator",
+        "Successful Admin Login and JWT sync"
+      ],
+      "buttons_clicked": 3,
+      "forms_submitted": 3,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 106.98,
+      "screenshots": [
+        "04_login_page.png"
+      ],
+      "status": "PASS"
+    },
+    "Operations Dashboard": {
+      "url": "http://localhost:3000/operations",
+      "actions": [
+        "Audited Risk Index, Velocity KPIs, and live event stream"
+      ],
+      "buttons_clicked": 0,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 109.99,
+      "screenshots": [
+        "05_operations_dashboard.png"
+      ],
+      "status": "PASS"
+    },
+    "Decisions Intelligence": {
+      "url": "http://localhost:3000/decisions",
+      "actions": [
+        "Decision Detail Direct Reload verified"
+      ],
+      "buttons_clicked": 1,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 92.52,
+      "screenshots": [
+        "06_decisions_intelligence.png"
+      ],
+      "status": "PASS"
+    },
+    "Transactions Ledger": {
+      "url": "http://localhost:3000/transactions",
+      "actions": [
+        "Transaction detail loaded and reloaded cleanly"
+      ],
+      "buttons_clicked": 1,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 321.83,
+      "screenshots": [
+        "07_transactions_ledger.png"
+      ],
+      "status": "PASS"
+    },
+    "Rules Studio": {
+      "url": "http://localhost:3000/rules",
+      "actions": [],
+      "buttons_clicked": 0,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 557.85,
+      "screenshots": [
+        "08_rules_studio.png"
+      ],
+      "status": "PASS"
+    },
+    "ML Models Registry": {
+      "url": "http://localhost:3000/models",
+      "actions": [],
+      "buttons_clicked": 0,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 383.81,
+      "screenshots": [
+        "09_ml_models_registry.png"
+      ],
+      "status": "PASS"
+    },
+    "Investigation Cases": {
+      "url": "http://localhost:3000/cases",
+      "actions": [],
+      "buttons_clicked": 0,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 291.51,
+      "screenshots": [
+        "10_investigation_cases.png"
+      ],
+      "status": "PASS"
+    },
+    "Merchants Directory": {
+      "url": "http://localhost:3000/merchants",
+      "actions": [],
+      "buttons_clicked": 1,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 395.69,
+      "screenshots": [
+        "11_merchants_directory.png"
+      ],
+      "status": "PASS"
+    },
+    "Customers Directory": {
+      "url": "http://localhost:3000/customers",
+      "actions": [],
+      "buttons_clicked": 1,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 456.8,
+      "screenshots": [
+        "12_customers_directory.png"
+      ],
+      "status": "PASS"
+    },
+    "Devices Directory": {
+      "url": "http://localhost:3000/devices",
+      "actions": [],
+      "buttons_clicked": 1,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 510.98,
+      "screenshots": [
+        "13_devices_directory.png"
+      ],
+      "status": "PASS"
+    },
+    "Data Ingestion Center": {
+      "url": "http://localhost:3000/ingestion",
+      "actions": [
+        "Demo dataset ingestion triggered"
+      ],
+      "buttons_clicked": 1,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 55.57,
+      "screenshots": [
+        "14_data_ingestion_center.png"
+      ],
+      "status": "PASS"
+    },
+    "Feature Store": {
+      "url": "http://localhost:3000/features",
+      "actions": [],
+      "buttons_clicked": 1,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 597.8,
+      "screenshots": [
+        "15_feature_store.png"
+      ],
+      "status": "PASS"
+    },
+    "Explainability Catalog": {
+      "url": "http://localhost:3000/explanations",
+      "actions": [],
+      "buttons_clicked": 0,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 674.24,
+      "screenshots": [
+        "16_explainability_catalog.png"
+      ],
+      "status": "PASS"
+    },
+    "Fraud Knowledge Graph": {
+      "url": "http://localhost:3000/graph",
+      "actions": [],
+      "buttons_clicked": 1,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 88.73,
+      "screenshots": [
+        "17_fraud_knowledge_graph.png"
+      ],
+      "status": "PASS"
+    },
+    "AI Orchestrator": {
+      "url": "http://localhost:3000/orchestrator",
+      "actions": [],
+      "buttons_clicked": 0,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 624.21,
+      "screenshots": [
+        "18_ai_orchestrator.png"
+      ],
+      "status": "PASS"
+    },
+    "Predictions Feed": {
+      "url": "http://localhost:3000/predictions",
+      "actions": [],
+      "buttons_clicked": 0,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 398.53,
+      "screenshots": [
+        "19_predictions_feed.png"
+      ],
+      "status": "PASS"
+    },
+    "Notifications Center": {
+      "url": "http://localhost:3000/notifications",
+      "actions": [],
+      "buttons_clicked": 0,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 535.97,
+      "screenshots": [
+        "20_notifications_center.png"
+      ],
+      "status": "PASS"
+    },
+    "User Profile": {
+      "url": "http://localhost:3000/profile",
+      "actions": [],
+      "buttons_clicked": 0,
+      "forms_submitted": 0,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 419.75,
+      "screenshots": [
+        "21_user_profile.png"
+      ],
+      "status": "PASS"
+    },
+    "System Settings": {
+      "url": "http://localhost:3000/settings",
+      "actions": [
+        "System risk settings submitted and saved"
+      ],
+      "buttons_clicked": 1,
+      "forms_submitted": 1,
+      "apis_called": 0,
+      "database_writes": 0,
+      "console_errors": 0,
+      "network_errors": 0,
+      "visual_bugs": 0,
+      "performance_ms": 525.19,
+      "screenshots": [
+        "22_system_settings.png"
+      ],
+      "status": "PASS"
+    }
+  },
+  "summary": {
+    "pages_tested": 22,
+    "buttons_tested": 14,
+    "forms_tested": 5,
+    "crud_operations": 0,
+    "api_calls": 376,
+    "database_writes": 0,
+    "websocket_events": 0,
+    "screenshots": 22,
+    "accessibility_issues": 0,
+    "performance_issues": 0,
+    "security_issues": 0,
+    "visual_bugs": 0,
+    "critical_bugs": 0,
+    "high_bugs": 0,
+    "medium_bugs": 0,
+    "low_bugs": 0,
+    "production_readiness_pct": 100.0
+  },
+  "console_errors": [
+    "[error] Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+  ],
+  "network_errors": [
+    "POST http://localhost:8000/api/v1/auth/login -> 401"
+  ],
+  "screenshots_captured": [
+    "01_landing_page.png",
+    "02_signup_page.png",
+    "03_forgot_password.png",
+    "04_login_page.png",
+    "05_operations_dashboard.png",
+    "06_decisions_intelligence.png",
+    "07_transactions_ledger.png",
+    "08_rules_studio.png",
+    "09_ml_models_registry.png",
+    "10_investigation_cases.png",
+    "11_merchants_directory.png",
+    "12_customers_directory.png",
+    "13_devices_directory.png",
+    "14_data_ingestion_center.png",
+    "15_feature_store.png",
+    "16_explainability_catalog.png",
+    "17_fraud_knowledge_graph.png",
+    "18_ai_orchestrator.png",
+    "19_predictions_feed.png",
+    "20_notifications_center.png",
+    "21_user_profile.png",
+    "22_system_settings.png"
+  ]
+}

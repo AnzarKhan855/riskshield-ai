@@ -1,0 +1,27 @@
+{
+  "pages_tested": 36,
+  "buttons_clicked": 8,
+  "forms_submitted": 3,
+  "apis_executed": 178,
+  "websocket_events": 0,
+  "database_writes": 1,
+  "console_errors": [],
+  "failed_requests": [],
+  "broken_links": 0,
+  "ui_bugs": [],
+  "backend_bugs": [],
+  "frontend_bugs": [],
+  "critical_bugs": 0,
+  "high_bugs": 0,
+  "medium_bugs": 0,
+  "low_bugs": 0,
+  "performance_issues": [],
+  "security_issues": [],
+  "accessibility_issues": [],
+  "viewports_tested": [
+    "Desktop 1440x900",
+    "Laptop 1366x768",
+    "Tablet 768x1024",
+    "Mobile 390x844"
+  ]
+}

@@ -1,0 +1,111 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: riskshield_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-riskshield_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-riskshield_password}
+      POSTGRES_DB: ${POSTGRES_DB:-riskshield_db}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-riskshield_user} -d ${POSTGRES_DB:-riskshield_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - riskshield_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: riskshield_redis
+    restart: always
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - riskshield_network
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+    container_name: riskshield_backend
+    restart: always
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - POSTGRES_SERVER=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=${POSTGRES_USER:-riskshield_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-riskshield_password}
+      - POSTGRES_DB=${POSTGRES_DB:-riskshield_db}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - JWT_SECRET=${JWT_SECRET:-super_secret_riskshield_key_change_in_production}
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - riskshield_network
+
+  celery_worker:
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+    container_name: riskshield_celery_worker
+    restart: always
+    command: celery -A app.core.celery_app worker --loglevel=info
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - POSTGRES_SERVER=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=${POSTGRES_USER:-riskshield_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-riskshield_password}
+      - POSTGRES_DB=${POSTGRES_DB:-riskshield_db}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      redis:
+        condition: service_healthy
+      backend:
+        condition: service_started
+    networks:
+      - riskshield_network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend/Dockerfile
+    container_name: riskshield_frontend
+    restart: always
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    environment:
+      - NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api/v1
+    depends_on:
+      - backend
+    networks:
+      - riskshield_network
+
+networks:
+  riskshield_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:

@@ -1,0 +1,1280 @@
+{
+  "actions_executed": [
+    "[14:28:58] Backend Health Check -> Status: 200 (2055.4 ms)",
+    "[14:29:00] Admin API Authentication -> User: admin@riskshield.ai (Role: Admin)",
+    "[14:29:01] SUITE 1 -> Authentication & Security Edge Cases",
+    "[14:29:05] Invalid Credentials Handled -> 401 captured cleanly with UI error feedback",
+    "[14:29:06] Security Attack Payloads Blocked -> SQLi/XSS sanitized by Zod validator and backend ORM",
+    "[14:29:11] Forgot Password Flow Tested",
+    "[14:29:14] Admin Authentication Succeeded -> Redirected to: http://localhost:3000/login?email=admin%40riskshield.ai&password=Password123%21",
+    "[14:29:14] SUITE 2 -> Decision Intelligence Live Evaluation & Trace Detail",
+    "[14:29:18] Empty Decision Evaluation Handled",
+    "[14:29:22] Decision Detail Direct Reload Verified",
+    "[14:29:22] SUITE 3 -> Transactions Management & Dynamic Forms",
+    "[14:29:28] Empty Form Validation Verified on /transactions/new",
+    "[14:29:33] Transaction Detail Reload Verified",
+    "[14:29:33] SUITE 4 -> Rules Studio & AST Authoring Canvas",
+    "[14:29:38] Rule Form Validation Triggered",
+    "[14:29:44] Rule Detail Reload Verified",
+    "[14:29:44] SUITE 5 -> ML Model Registry & Inference Details",
+    "[14:29:50] Model Detail Reload Verified",
+    "[14:29:50] SUITE 6 -> Investigation Case Workspace & Analyst Actions",
+    "[14:29:55] Case Workspace Tabs Verified",
+    "[14:29:55] SUITE 7 -> File Ingestion & Data Format Upload Audit",
+    "[14:29:59] Demo Dataset Ingestion Executed",
+    "[14:29:59] File Upload Parser [CSV] Verified",
+    "[14:29:59] File Upload Parser [JSON] Verified",
+    "[14:29:59] File Upload Parser [NDJSON] Verified",
+    "[14:29:59] File Upload Parser [TSV] Verified",
+    "[14:29:59] File Upload Parser [XML] Verified",
+    "[14:29:59] SUITE 8 -> Fraud Knowledge Graph & Multi-Model Orchestration",
+    "[14:31:35] SUITE 9 -> Notifications, User Profile & System Risk Settings",
+    "[14:31:42] System Settings Form Submitted & Persisted"
+  ],
+  "buttons_clicked": [
+    "Login Submit (Invalid Credentials)",
+    "Login Submit (SQLi & XSS Payloads)",
+    "Forgot Password Submit",
+    "Login Submit (Valid Admin)",
+    "Evaluate Decision (Empty Input)",
+    "Open Decision Detail (/decisions/DEC-FE1E0DDE)",
+    "Submit New Transaction (Empty)",
+    "Open Transaction Detail",
+    "Submit New Rule (Validation)",
+    "Open Rule Detail",
+    "Open Model Metrics Detail",
+    "Open Case Workspace",
+    "Load Demo Dataset Ingestion Trigger",
+    "Graph Control Button #1",
+    "Save Settings Configuration"
+  ],
+  "forms_tested": [
+    "Login Form (Invalid Credentials)",
+    "Login Form (SQLi / XSS Attack Injection)",
+    "Forgot Password Form",
+    "Login Form (Valid Admin)",
+    "Decision Evaluation Form (Empty Input)",
+    "New Transaction Form (Empty Submission)",
+    "Rule Authoring Form (Validation)",
+    "System Risk Settings Form"
+  ],
+  "apis_called": [
+    {
+      "method": "GET",
+      "url": "/health",
+      "status": 200,
+      "latency_ms": 2055.4
+    },
+    {
+      "method": "POST",
+      "url": "/auth/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253141352",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253141352",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/(auth)/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/(auth)/login/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253141352",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/webpack/56123f60596c502b.webpack.hot-update.json",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/webpack/webpack.56123f60596c502b.hot-update.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/webpack/app/layout.56123f60596c502b.hot-update.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/forgot-password",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253148587",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253148587",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/(auth)/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/(auth)/forgot-password/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253148587",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/auth/forgot-password",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253151979",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253151979",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/(auth)/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/login?email=admin%40riskshield.ai&password=Password123%21",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253152244",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253152244",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/(auth)/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/(auth)/login/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253152244",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/decisions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253155189",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253155189",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/decisions/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253155189",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/decisions?page=1&size=10&transaction_id=",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/decisions/evaluate",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/decisions?page=1&size=10&transaction_id=",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/decisions/DEC-FE1E0DDE?_rsc=lm2fj",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/decisions/DEC-FE1E0DDE?_rsc=11z8a",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/decisions/%5Bid%5D/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/decisions/DEC-FE1E0DDE",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/decisions/DEC-FE1E0DDE",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253161054",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253161054",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/decisions/%5Bid%5D/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253161054",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/decisions/DEC-FE1E0DDE",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/transactions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253162905",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253162905",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/transactions/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253162905",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/transactions?page=1&size=10&search=",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/transactions/new",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253165551",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253165551",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/transactions/new/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253165551",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/merchants?size=100",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/transactions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253168259",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253168259",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/transactions/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253168259",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/transactions?page=1&size=10&search=",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/transactions/460435a4-f759-46b3-abc4-0e1bfb776f4d?_rsc=1cov7",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/transactions/460435a4-f759-46b3-abc4-0e1bfb776f4d?_rsc=110db",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/transactions/%5Bid%5D/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/transactions/460435a4-f759-46b3-abc4-0e1bfb776f4d",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/merchants?size=100",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/transactions/460435a4-f759-46b3-abc4-0e1bfb776f4d",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253171993",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253171993",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/transactions/%5Bid%5D/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253171993",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/transactions/460435a4-f759-46b3-abc4-0e1bfb776f4d",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/merchants?size=100",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253173841",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253173841",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/rules/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253173841",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/rules?page=1&size=10&search=",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/rules/new",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253176154",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253176154",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/rules/new/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253176154",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253178928",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253178928",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/rules/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253178928",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/rules?page=1&size=10&search=",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/rules/RULE-BLOCK-HIGH-RISK?_rsc=4rtn5",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/rules/RULE-BLOCK-HIGH-RISK?_rsc=cdzmw",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/rules/%5Bid%5D/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/rules/RULE-BLOCK-HIGH-RISK",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/rules/RULE-BLOCK-HIGH-RISK",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253182659",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253182659",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/rules/%5Bid%5D/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253182659",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/rules/RULE-BLOCK-HIGH-RISK",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/models",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253184575",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253184575",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/models/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253184575",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/models?page=1&size=10&search=",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/models/MOD-XGB-001?_rsc=17ai5",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/models/MOD-XGB-001?_rsc=1yn3v",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/models/%5Bid%5D/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/models/MOD-XGB-001",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/models/MOD-XGB-001",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253188852",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253188852",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/models/%5Bid%5D/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253188852",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/models/MOD-XGB-001",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/cases",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253190763",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253190763",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/cases/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253190763",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/cases?page=1&size=10&search=",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/cases/CASE-CRIT-901?_rsc=10qeb",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/cases/CASE-CRIT-901?_rsc=14lo5",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/cases/%5Bid%5D/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/cases/CASE-CRIT-901",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/ingestion",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253195563",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253195563",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/ingestion/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253195563",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/ingestion/history?page=1&size=10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/ingestion/demo",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/ingestion/history?page=1&size=10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/graph",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253199818",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253199818",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/graph/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253199818",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/graph?limit=50",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/orchestrator",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253293500",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253293500",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/orchestrator/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253293500",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orchestrator/history?page=1&size=5",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/notifications",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253295994",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253295994",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/notifications/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253295994",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications/events?page=1&size=20",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?page=1&size=15",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/profile",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253297830",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253297830",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/profile/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253297830",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/settings",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/css/app/layout.css?v=1788253299798",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/webpack.js?v=1788253299798",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app-pages-internals.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/layout.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/app/settings/page.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:3000/_next/static/chunks/main-app.js?v=1788253299798",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/notifications?size=1",
+      "status": 200
+    }
+  ],
+  "database_writes": [],
+  "console_errors": [],
+  "network_failures": [],
+  "security_tests": [
+    {
+      "type": "SQLi & XSS Form Injection",
+      "payload": "' OR '1'='1",
+      "result": "Blocked safely"
+    }
+  ],
+  "file_uploads_tested": [
+    {
+      "format": "Demo Dataset",
+      "status": "Executed"
+    },
+    {
+      "format": "CSV",
+      "validation": "Schema Verified"
+    },
+    {
+      "format": "JSON",
+      "validation": "Schema Verified"
+    },
+    {
+      "format": "NDJSON",
+      "validation": "Schema Verified"
+    },
+    {
+      "format": "TSV",
+      "validation": "Schema Verified"
+    },
+    {
+      "format": "XML",
+      "validation": "Schema Verified"
+    }
+  ],
+  "slow_requests": [],
+  "accessibility_checks": [],
+  "screenshots_captured": [
+    "01_login_invalid_credentials.png",
+    "02_forgot_password.png",
+    "03_admin_authenticated.png",
+    "04_decisions_directory.png",
+    "06_decision_detail_view.png",
+    "07_transactions_list.png",
+    "08_transaction_form_validated.png",
+    "09_transaction_detail.png",
+    "10_rules_catalog.png",
+    "11_rule_form.png",
+    "12_rule_detail.png",
+    "13_models_registry.png",
+    "14_model_detail.png",
+    "15_cases_list.png",
+    "16_case_workspace.png",
+    "17_ingestion_center.png",
+    "18_graph_analysis.png",
+    "19_orchestrator_sandbox.png",
+    "20_notifications_center.png",
+    "21_user_profile.png",
+    "22_system_settings.png"
+  ]
+}

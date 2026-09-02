@@ -1,0 +1,94 @@
+{
+  "tested_features": [
+    "Public Landing Page (Hero, CTA, Navigation, Footer)",
+    "User Registration Flow & Client Validation",
+    "Authentication Failure Feedback (401)",
+    "Admin Authentication & Protected Route Entry",
+    "Operations Command Center (Live KPIs & Telemetry Feed)",
+    "Decisions Engine (Live Evaluation, Trace Details, Copy Trace)",
+    "Transactions Ledger (Filtering, Detail, Ingestion Form)",
+    "Rules Studio (AST Builder, Simulator, Rule Catalog)",
+    "ML Models Registry (ROC-AUC Curves, Versioning, Metrics)",
+    "Investigation Case Management (Workflow Tabs, Timeline, Resolution)",
+    "Entity Intelligence (Merchants, Customer Timelines, Device Fingerprints)",
+    "AI Pipelines (Ingestion Engine, Feature Store, SHAP Explanations, Knowledge Graph, AI Orchestrator, Predictions)",
+    "User Profile & System Risk Configuration"
+  ],
+  "passed_tests": [
+    "Landing Page Render & Public CTA Navigation",
+    "Signup Input Validation",
+    "Invalid Password Error Toast Captured",
+    "SQLi / XSS Attack Vectors Blocked",
+    "Admin Login & Session Initialization",
+    "Real-Time Telemetry & Operations Dashboard Loaded",
+    "Copy JSON Trace Action",
+    "Decision Trace Detail Direct In-Place Reload",
+    "Transaction Detail & In-Place Reload",
+    "Rule Detail Editor & In-Place Reload",
+    "Model Metrics Inspector & In-Place Reload",
+    "Case Workspace Analyst Tabs & Direct Reload",
+    "Entity Profiles & Dynamic Views",
+    "AI Pipelines & Visualization Canvas",
+    "Settings Save & Configuration Persistence"
+  ],
+  "failed_tests": [],
+  "screenshots": [
+    "01_first_time_landing.png",
+    "02_signup_form.png",
+    "03_login_401_error.png",
+    "04_authenticated_operations.png",
+    "05_operations_kpis.png",
+    "06_decision_trace_detail.png",
+    "07_transaction_form.png",
+    "08_rules_studio.png",
+    "09_models_registry.png",
+    "10_cases_list.png",
+    "11_devices_directory.png",
+    "12_ingestion_center.png",
+    "13_fraud_graph.png",
+    "14_system_settings.png"
+  ],
+  "console_errors": [
+    "[error] Warning: Extra attributes from the server: %s%s style \n    at input\n    at div\n    at div\n    at div\n    at form\n    at div\n    at SignupPage (webpack-internal:///(app-pages-browser)/./src/app/(auth)/signup/page.tsx:31:92)\n    at ClientPageRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/client-page.js:14:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:370:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:370:11)\n    at div\n    at div\n    at div\n    at AuthLayout (Server)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js:370:11)\n    at ToastProvider (webpack-internal:///(app-pages-browser)/./src/components/ui/toast.tsx:20:11)\n    at QueryClientProvider (webpack-internal:///(app-pages-browser)/./node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js:23:11)\n    at Providers (webpack-internal:///(app-pages-browser)/./src/app/providers.tsx:17:11)\n    at body\n    at html\n    at RootLayout (Server)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at DevRootNotFoundBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/dev-root-not-found-boundary.js:33:11)\n    at ReactDevOverlay (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)\n    at HotReload (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:321:11)\n    at Router (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/app-router.js:207:11)\n    at ErrorBoundaryHandler (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js:113:9)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at AppRouter (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/app-router.js:585:13)\n    at ServerRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:112:27)\n    at Root (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:117:11)",
+    "[error] Failed to load resource: the server responded with a status of 422 (Unprocessable Content)"
+  ],
+  "network_errors": [
+    "GET http://localhost:8000/api/v1/transactions/TXN-ML-PRED-992 -> 422"
+  ],
+  "api_failures": [],
+  "db_records": {
+    "audit_logs": 69,
+    "cases": 0,
+    "customers": 0,
+    "decisions": 9,
+    "devices": 0,
+    "event_logs": 0,
+    "evidence": 0,
+    "explanations": 0,
+    "features": 0,
+    "graph_edges": 0,
+    "graph_nodes": 0,
+    "ingestion_history": 0,
+    "merchants": 0,
+    "models": 0,
+    "notifications": 0,
+    "predictions": 0,
+    "raw_transactions": 0,
+    "refresh_tokens": 0,
+    "rules": 0,
+    "transactions": 0,
+    "uploaded_files": 0,
+    "uploads": 3,
+    "users": 0
+  },
+  "latencies": {
+    "auth_login": 2515.49,
+    "landing_page": 1358.05
+  },
+  "security_findings": [
+    "Input sanitization verified: SQLi/XSS blocked before execution."
+  ],
+  "perf_findings": [],
+  "a11y_findings": [],
+  "ux_findings": []
+}
