@@ -1,0 +1,59 @@
+{
+  "summary": {
+    "total_tests": 10,
+    "passed": 10,
+    "failed": 0
+  },
+  "details": [
+    {
+      "test": "Database Connectivity Check",
+      "passed": true,
+      "detail": "Session active and querying successfully"
+    },
+    {
+      "test": "Table Row Count: Users",
+      "passed": true,
+      "detail": "5 records found"
+    },
+    {
+      "test": "Table Row Count: Transactions",
+      "passed": true,
+      "detail": "6 records found"
+    },
+    {
+      "test": "Table Row Count: Decisions",
+      "passed": true,
+      "detail": "13 records found"
+    },
+    {
+      "test": "Table Row Count: DecisionRules",
+      "passed": true,
+      "detail": "4 records found"
+    },
+    {
+      "test": "Table Row Count: InvestigationCases",
+      "passed": true,
+      "detail": "11 records found"
+    },
+    {
+      "test": "Table Row Count: AuditLogs",
+      "passed": true,
+      "detail": "122 records found"
+    },
+    {
+      "test": "Foreign Key Integrity: Case -> Transaction",
+      "passed": true,
+      "detail": "All case references link to valid transaction records"
+    },
+    {
+      "test": "ACID Rollback Compliance",
+      "passed": true,
+      "detail": "Rollback cleanly purged uncommitted state from DB"
+    },
+    {
+      "test": "Audit Log Subsystem",
+      "passed": true,
+      "detail": "10 recent audit trail events recorded"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "summary": {
+    "total_tests": 5,
+    "passed": 5,
+    "failed": 0
+  },
+  "ml_models": {},
+  "latencies_ms": {
+    "p50": 154.35,
+    "p95": 160.36,
+    "min": 143.08,
+    "max": 160.36
+  },
+  "shap_explainability": {},
+  "details": [
+    {
+      "test": "Model Registry Active Catalog",
+      "passed": true,
+      "detail": "5 models loaded in registry"
+    },
+    {
+      "test": "ML Inference Latency Benchmark",
+      "passed": true,
+      "detail": "p50=154.35ms, p95=160.36ms (SLA < 500ms)"
+    },
+    {
+      "test": "AI Orchestrator Pipeline Execution",
+      "passed": true,
+      "detail": "Status: 201 (82.55ms)"
+    },
+    {
+      "test": "SHAP Explainability & Feature Contribution",
+      "passed": true,
+      "detail": "Decision DEC-ECAE243A explanation queried (Status: 200)"
+    },
+    {
+      "test": "Rule Studio Expression Evaluation",
+      "passed": true,
+      "detail": "Evaluated expression with match result: True"
+    }
+  ]
+}

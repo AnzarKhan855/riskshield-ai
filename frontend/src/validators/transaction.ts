@@ -1,0 +1,45 @@
+import { z } from "zod";
+
+export const transactionFormSchema = z.object({
+  merchant_id: z.string().uuid("Please select a valid merchant"),
+  customer_id: z.string().optional(),
+  payment_method: z.enum([
+    "UPI",
+    "Credit Card",
+    "Debit Card",
+    "Net Banking",
+    "Wallet",
+    "EMI",
+  ]),
+  card_network: z.string().optional(),
+  card_bin: z.string().optional(),
+  currency: z.string().min(1).default("USD"),
+  amount: z.coerce.number().gt(0, "Amount must be greater than 0"),
+  fee: z.coerce.number().min(0).default(0),
+  tax: z.coerce.number().min(0).default(0),
+  status: z.enum([
+    "Pending",
+    "Processing",
+    "Success",
+    "Failed",
+    "Cancelled",
+    "Refunded",
+    "Chargeback",
+  ]).default("Pending"),
+  transaction_type: z.enum(["Payment", "Refund", "Settlement", "Payout"]).default("Payment"),
+  country: z.string().min(1).default("United States"),
+  state: z.string().optional(),
+  city: z.string().optional(),
+  ip_address: z.string().optional(),
+  device_id: z.string().optional(),
+  device_type: z.string().optional(),
+  operating_system: z.string().optional(),
+  browser: z.string().optional(),
+  latitude: z.coerce.number().optional(),
+  longitude: z.coerce.number().optional(),
+  reference_number: z.string().optional(),
+  gateway_response: z.string().optional(),
+  failure_reason: z.string().optional(),
+});
+
+export type TransactionFormData = z.infer<typeof transactionFormSchema>;
