@@ -1,6 +1,6 @@
 {
   "suite": "Security, Governance, RBAC & Decision Override Audit",
-  "timestamp": 1790228694.4884472,
+  "timestamp": 1790229621.449478,
   "summary": {
     "total_tests": 17,
     "passed": 17,
@@ -15,7 +15,7 @@
     {
       "name": "Standard User Signup",
       "status": "PASS",
-      "details": "Created account user_unauth_1790228694@riskshield.ai"
+      "details": "Created account user_unauth_1790229621@riskshield.ai"
     },
     {
       "name": "Standard User Login",
@@ -55,7 +55,7 @@
     {
       "name": "Rule Studio: Rule Creation",
       "status": "PASS",
-      "details": "Rule RULE-0CFF570A created"
+      "details": "Rule RULE-FE72B74F created"
     },
     {
       "name": "RBAC: Unauthorized Rule Deletion Blocked",
