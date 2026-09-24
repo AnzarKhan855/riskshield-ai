@@ -82,23 +82,21 @@ def _resolve_and_verify_artifact(model_id: str, artifact_path: str, framework: s
     model_entry = manifest.get("models", {}).get(model_id, {})
     resolved_path: Optional[Path] = None
 
-    # Priority 1: Manifest filename lookup
-    if model_entry and "filename" in model_entry:
-        candidate = models_dir / model_entry["filename"]
-        if candidate.exists():
-            resolved_path = candidate
-
-    # Priority 2: Direct artifact_path lookup
-    if not resolved_path and artifact_path:
+    # Priority 1: Direct artifact_path lookup if provided
+    if artifact_path:
         cand_direct = Path(artifact_path)
         if cand_direct.exists() and cand_direct.is_file():
             resolved_path = cand_direct
         else:
-            # Check relative to models_dir (e.g. /models/MOD-XGB-001 or MOD-XGB-001)
-            filename_only = cand_direct.name
-            cand_in_models = models_dir / filename_only
+            cand_in_models = models_dir / cand_direct.name
             if cand_in_models.exists():
                 resolved_path = cand_in_models
+
+    # Priority 2: Manifest filename lookup
+    if not resolved_path and model_entry and "filename" in model_entry:
+        candidate = models_dir / model_entry["filename"]
+        if candidate.exists():
+            resolved_path = candidate
 
     # Priority 3: Lookup by standard framework defaults only for generic model ids
     if not resolved_path and (not model_id or model_id.lower() in ("default", "baseline")):
