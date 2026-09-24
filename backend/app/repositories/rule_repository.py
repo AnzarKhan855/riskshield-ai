@@ -1,6 +1,6 @@
 from typing import Any, List, Optional, Tuple, Union
 import uuid
-from sqlalchemy import func, select
+from sqlalchemy import func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.decision_rule import DecisionRule
 from app.repositories.base import BaseRepository
@@ -40,6 +40,23 @@ class DecisionRuleRepository(BaseRepository[DecisionRule]):
             return result.scalar_one_or_none()
         except Exception:
             return None
+
+    async def soft_delete(self, id: Any) -> bool:
+        try:
+            rule = await self.get_by_id_or_rule_id(id)
+            if not rule:
+                return False
+            stmt = (
+                update(DecisionRule)
+                .where(DecisionRule.id == rule.id, DecisionRule.is_deleted == False)
+                .values(is_deleted=True, enabled=False)
+            )
+            result = await self.session.execute(stmt)
+            await self.session.commit()
+            return result.rowcount > 0
+        except Exception:
+            await self.session.rollback()
+            return False
 
     async def get_active_published_rules(self) -> List[DecisionRule]:
         try:
