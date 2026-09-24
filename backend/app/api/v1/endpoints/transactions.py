@@ -3,9 +3,10 @@ from typing import Any, Optional
 import uuid
 from fastapi import APIRouter, Depends, Query, status
 from app.core.deps import get_current_active_user, get_transaction_service
+from app.core.rbac import require_roles
 from app.core.response import APIResponse, success_response
 from app.models.transaction import PaymentMethod, TransactionStatus, TransactionType
-from app.models.user import User
+from app.models.user import User, UserRole
 from app.schemas.transaction import (
     PaginatedTransactionResponse,
     TransactionCreate,
@@ -152,7 +153,7 @@ async def update_transaction(
 )
 async def delete_transaction(
     id: str,
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN)),
     transaction_service: TransactionService = Depends(get_transaction_service),
 ) -> Any:
     await transaction_service.soft_delete_transaction(

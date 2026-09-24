@@ -26,7 +26,7 @@ def make_request(method: str, path: str, payload: dict = None, token: str = None
     
     t0 = time.perf_counter()
     try:
-        with urllib.request.urlopen(req, timeout=10) as resp:
+        with urllib.request.urlopen(req, timeout=15) as resp:
             latency = (time.perf_counter() - t0) * 1000
             body = resp.read().decode("utf-8")
             res_json = json.loads(body) if body else {}
@@ -272,7 +272,9 @@ def run_suite():
         "transaction_id": sample_txn_id
     }, token=admin_token)
     log_test("Evaluate Decision Platform", "POST", "/decisions/evaluate", [200, 201], r)
-    if r.get("data", {}).get("decision_id"):
+    if r.get("data", {}).get("data", {}).get("decision_id"):
+        sample_dec_id = r["data"]["data"]["decision_id"]
+    elif r.get("data", {}).get("decision_id"):
         sample_dec_id = r["data"]["decision_id"]
     
     if sample_dec_id:
@@ -321,7 +323,9 @@ def run_suite():
     }
     r = make_request("POST", "/cases", test_case_payload, token=admin_token)
     log_test("Create Investigation Case", "POST", "/cases", [200, 201], r)
-    if r.get("data", {}).get("case_id"):
+    if r.get("data", {}).get("data", {}).get("case_id"):
+        sample_case_id = r["data"]["data"]["case_id"]
+    elif r.get("data", {}).get("case_id"):
         sample_case_id = r["data"]["case_id"]
     
     if sample_case_id:

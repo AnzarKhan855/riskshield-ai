@@ -1,0 +1,21 @@
+name: ❓ Question & Support
+description: Ask a question about RiskShield AI configuration, models, or system design
+title: "[Q]: "
+labels: ["question", "documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please check our [Documentation](https://github.com/your-org/riskshield-ai/tree/main/docs) before submitting a question.
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: What would you like to know or clarify about RiskShield AI?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context & Environment
+      description: Share any relevant details about your environment, architecture, or use case.

@@ -1,0 +1,63 @@
+{
+  "dataset_name": "RiskShield AI Enterprise Production Demo Dataset",
+  "generation_seed": 42,
+  "generated_at": "2026-09-20T13:43:25.843221+00:00",
+  "records": {
+    "users": 10000,
+    "merchants": 1000,
+    "devices": 5000,
+    "transactions": 50000,
+    "investigation_cases": 2500,
+    "evidence_records": 2500,
+    "audit_logs": 10000
+  },
+  "risk_distribution": {
+    "normal_allow": 40050,
+    "suspicious_review": 7377,
+    "fraud_block": 2573,
+    "normal_percentage": 80.1,
+    "suspicious_percentage": 14.75,
+    "fraud_percentage": 5.15
+  },
+  "schema_specification": {
+    "user": [
+      "id",
+      "email",
+      "first_name",
+      "last_name",
+      "role",
+      "is_active",
+      "is_verified",
+      "created_at"
+    ],
+    "merchant": [
+      "id",
+      "merchant_code",
+      "business_name",
+      "industry",
+      "country",
+      "status",
+      "risk_level"
+    ],
+    "device": [
+      "id",
+      "device_fingerprint",
+      "device_type",
+      "operating_system",
+      "vpn_detected",
+      "emulator",
+      "risk_flags"
+    ],
+    "transaction": [
+      "id",
+      "transaction_id",
+      "merchant_id",
+      "customer_id",
+      "amount",
+      "payment_method",
+      "ground_truth",
+      "expected_decision",
+      "expected_risk_score"
+    ]
+  }
+}

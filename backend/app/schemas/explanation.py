@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class FeatureContributionSchema(BaseModel):
@@ -31,6 +31,13 @@ class BusinessRuleContributionSchema(BaseModel):
     action: str
     impact_score: float
     description: str
+
+    @field_validator("rule_name", mode="before")
+    @classmethod
+    def normalize_rule_name(cls, v):
+        if isinstance(v, dict):
+            return str(v.get("rule_name") or v.get("rule_id") or "Unknown Rule")
+        return str(v)
 
 
 class RecommendationSchema(BaseModel):

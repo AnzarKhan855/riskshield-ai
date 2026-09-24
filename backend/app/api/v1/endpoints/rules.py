@@ -1,8 +1,9 @@
 from typing import Any, Optional
 from fastapi import APIRouter, Depends, Query, status
 from app.core.deps import get_current_active_user, get_rule_service
+from app.core.rbac import require_roles
 from app.core.response import APIResponse, success_response
-from app.models.user import User
+from app.models.user import User, UserRole
 from app.schemas.decision_rule import (
     PaginatedRuleResponse,
     RuleCreateRequest,
@@ -60,7 +61,7 @@ async def validate_rule(
 )
 async def create_rule(
     body: RuleCreateRequest,
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN, UserRole.ANALYST)),
     rule_service: DecisionRuleService = Depends(get_rule_service),
 ) -> Any:
     result = await rule_service.create_rule(body, creator_user_id=current_user.id)
@@ -128,7 +129,7 @@ async def get_rule(
 async def update_rule(
     id: str,
     body: RuleUpdateRequest,
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN, UserRole.ANALYST)),
     rule_service: DecisionRuleService = Depends(get_rule_service),
 ) -> Any:
     result = await rule_service.update_rule(id, body, updater_user_id=current_user.id)
@@ -145,7 +146,7 @@ async def update_rule(
 )
 async def delete_rule(
     id: str,
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN)),
     rule_service: DecisionRuleService = Depends(get_rule_service),
 ) -> Any:
     await rule_service.soft_delete_rule(id, deleter_user_id=current_user.id)
@@ -162,7 +163,7 @@ async def delete_rule(
 )
 async def publish_rule(
     rule_id: str = Query(..., description="Rule ID to publish"),
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN, UserRole.ANALYST)),
     rule_service: DecisionRuleService = Depends(get_rule_service),
 ) -> Any:
     result = await rule_service.publish_rule(rule_id, publisher_user_id=current_user.id)

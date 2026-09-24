@@ -1,0 +1,97 @@
+{
+  "suite": "Security, Governance, RBAC & Decision Override Audit",
+  "timestamp": 1790228694.4884472,
+  "summary": {
+    "total_tests": 17,
+    "passed": 17,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "Admin Authentication",
+      "status": "PASS",
+      "details": "Admin credentials verified"
+    },
+    {
+      "name": "Standard User Signup",
+      "status": "PASS",
+      "details": "Created account user_unauth_1790228694@riskshield.ai"
+    },
+    {
+      "name": "Standard User Login",
+      "status": "PASS",
+      "details": "User session active"
+    },
+    {
+      "name": "Vertical Privilege Escalation Prevention",
+      "status": "PASS",
+      "details": "Self-registering Admin role rejected with HTTP 422"
+    },
+    {
+      "name": "RBAC: Unauthorized Decision Override Blocked",
+      "status": "PASS",
+      "details": "Non-analyst received HTTP 403"
+    },
+    {
+      "name": "Authorized Decision Override with Audit Trail",
+      "status": "PASS",
+      "details": "Decision overridden to APPROVE and persisted"
+    },
+    {
+      "name": "Decision Override State Persistence",
+      "status": "PASS",
+      "details": "Final decision: APPROVE"
+    },
+    {
+      "name": "Rule Studio: AST Syntax Validation",
+      "status": "PASS",
+      "details": "Expression syntax valid"
+    },
+    {
+      "name": "Rule Studio: Expression Simulation Engine",
+      "status": "PASS",
+      "details": "Rule matched simulated payload"
+    },
+    {
+      "name": "Rule Studio: Rule Creation",
+      "status": "PASS",
+      "details": "Rule RULE-0CFF570A created"
+    },
+    {
+      "name": "RBAC: Unauthorized Rule Deletion Blocked",
+      "status": "PASS",
+      "details": "Standard user received HTTP 403"
+    },
+    {
+      "name": "RBAC: Unauthorized Model Promotion Blocked",
+      "status": "PASS",
+      "details": "Standard user received HTTP 403"
+    },
+    {
+      "name": "NoSQL Injection Vector Handling",
+      "status": "PASS",
+      "details": "Handled safely without error or injection leakage"
+    },
+    {
+      "name": "SQL Injection Vector Handling",
+      "status": "PASS",
+      "details": "Safely sanitized and handled by ORM"
+    },
+    {
+      "name": "XSS Storage Vector Handling",
+      "status": "PASS",
+      "details": "Stored safely without script execution"
+    },
+    {
+      "name": "JWT Alg 'none' Attack Blocked",
+      "status": "PASS",
+      "details": "Rejected with HTTP 401 Unauthorized"
+    },
+    {
+      "name": "Secret Scan: Zero Real Exposed Credentials",
+      "status": "PASS",
+      "details": "0 exposed secrets detected"
+    }
+  ],
+  "secret_audit_findings": []
+}

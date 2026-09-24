@@ -120,7 +120,7 @@ class InvestigationService:
         if not record:
             try:
                 rec_uuid = uuid.UUID(case_id_str)
-                record = await self.case_repo.get_active_by_id(rec_uuid)
+                record = await self.case_repo.get_by_id(rec_uuid)
             except ValueError:
                 pass
 

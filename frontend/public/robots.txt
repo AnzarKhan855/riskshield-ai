@@ -1,0 +1,18 @@
+# RiskShield AI Enterprise Security - Disallow crawler indexing on sensitive internal routes
+User-agent: *
+Disallow: /api/
+Disallow: /operations
+Disallow: /decisions
+Disallow: /transactions
+Disallow: /cases
+Disallow: /rules
+Disallow: /models
+Disallow: /graph
+Disallow: /features
+Disallow: /ai
+Disallow: /merchants
+Disallow: /customers
+Disallow: /devices
+Disallow: /ingestion
+Disallow: /settings
+Disallow: /profile

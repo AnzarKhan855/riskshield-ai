@@ -29,13 +29,27 @@ class RuleEvaluator:
             return False, "Invalid or prohibited expression syntax."
 
         try:
-            # Replace logical operators for Python syntax
-            expr = expression_str.replace(" AND ", " and ").replace(" OR ", " or ").replace(" NOT ", " not ")
+            # Replace logical operators and boolean literals for safe Python evaluation
+            expr = expression_str
+            expr = re.sub(r'\bAND\b', 'and', expr, flags=re.IGNORECASE)
+            expr = re.sub(r'\bOR\b', 'or', expr, flags=re.IGNORECASE)
+            expr = re.sub(r'\bNOT\b', 'not', expr, flags=re.IGNORECASE)
+            expr = re.sub(r'\btrue\b', 'True', expr)
+            expr = re.sub(r'\bfalse\b', 'False', expr)
+            expr = re.sub(r'\bnull\b', 'None', expr)
 
             # Build safe environment dictionary with default values for referenced missing keys
             env: Dict[str, Any] = {
+                "true": True,
+                "false": False,
+                "null": None,
+                "True": True,
+                "False": False,
+                "None": None,
                 "txn_amount": 0.0,
+                "amount": 0.0,
                 "composite_risk_score": 0.0,
+                "customer_risk_score": 0.0,
                 "cust_ltv": 0.0,
                 "dev_vpn_detected": False,
                 "dev_rooted_detected": False,
@@ -45,6 +59,8 @@ class RuleEvaluator:
                 "beh_is_night_txn": False,
                 "cust_chargeback_ratio": 0.0,
                 "merchant_chargeback_rate": 0.0,
+                "is_foreign_transaction": False,
+                "velocity_count_1h": 0,
             }
             env.update(context_vars)
 

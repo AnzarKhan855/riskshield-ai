@@ -24,24 +24,30 @@ class DecisionRepository(BaseRepository[Decision]):
         if entity.decision_id:
             _IN_MEMORY_DECISIONS[entity.decision_id] = entity
 
-        # Asynchronously sync to MongoDB Atlas
+        # Non-blocking sync to MongoDB Atlas
         try:
             mongo_db = get_mongo_db()
             if mongo_db is not None:
-                await mongo_db["decisions"].insert_one({
-                    "decision_id": entity.decision_id,
-                    "transaction_id": entity.transaction_id,
-                    "composite_prediction_id": entity.composite_prediction_id,
-                    "decision": entity.decision,
-                    "decision_status": entity.decision_status,
-                    "decision_confidence": float(entity.decision_confidence or 0.0),
-                    "composite_risk_score": float(entity.composite_risk_score or 0.0),
-                    "decision_reason": entity.decision_reason,
-                    "triggered_rules": entity.triggered_rules or [],
-                    "triggered_policies": entity.triggered_policies or [],
-                    "execution_time_ms": float(entity.execution_time_ms or 0.0),
-                    "created_at": entity.created_at.isoformat() if entity.created_at else None,
-                })
+                import asyncio
+                async def _sync_mongo_dec():
+                    try:
+                        await mongo_db["decisions"].insert_one({
+                            "decision_id": entity.decision_id,
+                            "transaction_id": entity.transaction_id,
+                            "composite_prediction_id": entity.composite_prediction_id,
+                            "decision": entity.decision,
+                            "decision_status": entity.decision_status,
+                            "decision_confidence": float(entity.decision_confidence or 0.0),
+                            "composite_risk_score": float(entity.composite_risk_score or 0.0),
+                            "decision_reason": entity.decision_reason,
+                            "triggered_rules": entity.triggered_rules or [],
+                            "triggered_policies": entity.triggered_policies or [],
+                            "execution_time_ms": float(entity.execution_time_ms or 0.0),
+                            "created_at": entity.created_at.isoformat() if entity.created_at else None,
+                        })
+                    except Exception:
+                        pass
+                asyncio.create_task(_sync_mongo_dec())
         except Exception:
             pass
 

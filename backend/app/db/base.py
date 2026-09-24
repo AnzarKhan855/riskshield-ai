@@ -38,5 +38,11 @@ def get_sync_mongo_client() -> Optional[pymongo.MongoClient]:
 def get_mongo_db():
     client = get_async_mongo_client()
     if client:
+        try:
+            default_db = client.get_default_database()
+            if default_db is not None:
+                return default_db
+        except Exception:
+            pass
         return client["riskshield_ai"]
     return None

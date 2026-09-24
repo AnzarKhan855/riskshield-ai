@@ -1,14 +1,16 @@
 import uuid
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 from pydantic import BaseModel, ConfigDict, Field
 from app.models.model_registry import ModelType
 
 
 class PredictionRequest(BaseModel):
     transaction_id: str = Field(..., example="TXN-8D93240D")
-    model_type: ModelType = Field(ModelType.FRAUD_DETECTION, example=ModelType.FRAUD_DETECTION)
+    model_type: Optional[ModelType] = Field(ModelType.FRAUD_DETECTION, example=ModelType.FRAUD_DETECTION)
     feature_vector_id: Optional[str] = Field(None, example="FV-99B123A4")
+    model_id: Optional[Union[uuid.UUID, str]] = Field(None, example="MDL-XGB-FRAUD-V3")
+    features: Optional[Dict[str, Any]] = None
 
 
 class PredictionResponse(BaseModel):

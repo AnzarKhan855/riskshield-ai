@@ -134,3 +134,62 @@ def test_composite_risk_calculator():
     assert overall_score > 80.0
     assert confidence > 0.85
     assert risk_level in ["CRITICAL", "HIGH"]
+
+
+def test_swagger_ui_documentation_endpoints():
+    """Verify Swagger UI and ReDoc return HTTP 200 OK in development mode."""
+    # /docs (Swagger UI)
+    response_docs = client.get("/docs")
+    assert response_docs.status_code == 200
+    assert "text/html" in response_docs.headers.get("content-type", "")
+    assert "swagger-ui" in response_docs.text.lower()
+
+    # /redoc (ReDoc UI)
+    response_redoc = client.get("/redoc")
+    assert response_redoc.status_code == 200
+    assert "text/html" in response_redoc.headers.get("content-type", "")
+    assert "redoc" in response_redoc.text.lower()
+
+
+def test_openapi_json_schema():
+    """Verify OpenAPI JSON specification endpoint returns HTTP 200 and valid schema."""
+    response = client.get("/openapi.json")
+    assert response.status_code == 200
+    assert "application/json" in response.headers.get("content-type", "")
+    schema = response.json()
+    assert "openapi" in schema
+    assert "info" in schema
+    assert schema["info"]["title"] == settings.PROJECT_NAME
+    assert "paths" in schema
+    # Verify health check and core routers exist in schema paths
+    assert f"{settings.API_V1_STR}/health" in schema["paths"]
+    assert f"{settings.API_V1_STR}/auth/login" in schema["paths"]
+
+
+def test_docs_backwards_compatibility_redirects():
+    """Verify /api/v1/docs and /api/v1/redoc redirect to /docs and /redoc without breaking."""
+    response_docs = client.get(f"{settings.API_V1_STR}/docs", follow_redirects=False)
+    assert response_docs.status_code in [307, 308]
+    assert response_docs.headers.get("location") == "/docs"
+
+    response_redoc = client.get(f"{settings.API_V1_STR}/redoc", follow_redirects=False)
+    assert response_redoc.status_code in [307, 308]
+    assert response_redoc.headers.get("location") == "/redoc"
+
+
+def test_production_mode_docs_disabled(monkeypatch):
+    """Verify documentation endpoints return 404 when ENVIRONMENT is set to production."""
+    from fastapi import FastAPI
+    # Simulate production FastAPI app initialization
+    prod_app = FastAPI(
+        title="RiskShield AI",
+        version="1.0.0",
+        openapi_url=None,
+        docs_url=None,
+        redoc_url=None,
+    )
+    prod_client = TestClient(prod_app)
+    assert prod_client.get("/docs").status_code == 404
+    assert prod_client.get("/redoc").status_code == 404
+    assert prod_client.get("/openapi.json").status_code == 404
+

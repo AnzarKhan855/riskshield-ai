@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 GitHub Discussions
+    url: https://github.com/your-org/riskshield-ai/discussions
+    about: Ask questions, share ideas, and connect with other RiskShield AI maintainers and users.
+  - name: 🔒 Security Advisories
+    url: mailto:security@riskshield.ai
+    about: Report potential security vulnerabilities confidentially.

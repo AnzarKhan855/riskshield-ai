@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, status
 from fastapi.responses import JSONResponse
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
+from app.core.config import settings
 from app.core.database import get_db
 from app.core.response import APIResponse, success_response
 
@@ -22,7 +23,7 @@ async def health_check() -> Any:
     return success_response(
         data={
             "status": "HEALTHY",
-            "environment": "production",
+            "environment": settings.ENVIRONMENT,
             "uptime_seconds": round(uptime_seconds, 2),
             "timestamp": datetime.now(timezone.utc).isoformat(),
         },
@@ -96,7 +97,7 @@ async def cluster_telemetry(db: AsyncSession = Depends(get_db)) -> Any:
         content={
             "cluster_id": "riskshield-primary-mesh-01",
             "region": "us-east-1",
-            "environment": "production",
+            "environment": settings.ENVIRONMENT,
             "uptime_seconds": round(uptime_seconds, 2),
             "telemetry": {
                 "tps_current": 14820,
