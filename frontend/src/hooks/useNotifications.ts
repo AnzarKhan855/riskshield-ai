@@ -81,7 +81,10 @@ export function useNotificationWebSocket(onMessageReceived?: (msg: any) => void)
   useEffect(() => {
     const accessToken = useAuthStore.getState().accessToken;
     const protocol = typeof window !== "undefined" && window.location.protocol === "https:" ? "wss:" : "ws:";
-    const rawApiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
+    const rawApiUrl =
+      process.env.NEXT_PUBLIC_API_BASE_URL ||
+      process.env.NEXT_PUBLIC_API_URL ||
+      "http://localhost:8000/api/v1";
     const host = rawApiUrl.replace(/^https?:\/\//, "").replace(/\/api\/v1\/?$/, "");
     const wsUrl = `${protocol}//${host}/api/v1/notifications/ws${accessToken ? `?token=${encodeURIComponent(accessToken)}` : ""}`;
 

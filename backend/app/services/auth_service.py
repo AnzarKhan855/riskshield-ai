@@ -66,6 +66,12 @@ class AuthenticationService:
         if existing_user:
             raise ConflictException("A user with this email address already exists.")
 
+        # Prevent privilege escalation to Admin via public signup
+        if signup_data.role == UserRole.ADMIN:
+            raise ValidationException(
+                "Administrator accounts cannot be self-registered. Please contact an existing platform administrator."
+            )
+
         user = User(
             first_name=signup_data.first_name,
             last_name=signup_data.last_name,

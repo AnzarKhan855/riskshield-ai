@@ -26,8 +26,8 @@ class FeatureStoreResponse(BaseModel):
     feature_count: int
     feature_payload: Dict[str, Any]
     prediction_ready: bool
-    created_at: datetime
-    updated_at: datetime
+    created_at: Optional[datetime] = Field(default_factory=datetime.utcnow)
+    updated_at: Optional[datetime] = Field(default_factory=datetime.utcnow)
 
 
 class PaginatedFeatureStoreResponse(BaseModel):

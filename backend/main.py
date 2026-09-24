@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 import logging
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 
 from app.api.v1.router import api_router
 from app.core.config import settings
@@ -22,6 +22,15 @@ logger = logging.getLogger("riskshield.main")
 async def lifespan(app: FastAPI):
     """Production application lifecycle manager."""
     logger.info("Initializing RiskShield AI Production Platform...")
+
+    # Production guard: Strict PostgreSQL requirement
+    if settings.ENVIRONMENT.lower() == "production" and (
+        "sqlite" in (settings.DATABASE_URL or "").lower()
+        or "sqlite" in (settings.ASYNC_DATABASE_URI or "").lower()
+    ):
+        logger.critical("FATAL: Production environment requires PostgreSQL. SQLite is strictly prohibited in production.")
+        raise RuntimeError("Production environment requires PostgreSQL. SQLite is strictly prohibited in production.")
+
     try:
         from app.models import Base
         from app.core.database import engine
@@ -37,12 +46,14 @@ async def lifespan(app: FastAPI):
     logger.info("Graceful shutdown completed for RiskShield AI Platform.")
 
 
+is_docs_enabled = settings.ENVIRONMENT.lower() != "production"
+
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
-    openapi_url=f"{settings.API_V1_STR}/openapi.json" if settings.ENVIRONMENT != "production" else None,
-    docs_url=f"{settings.API_V1_STR}/docs" if settings.ENVIRONMENT != "production" else None,
-    redoc_url=f"{settings.API_V1_STR}/redoc" if settings.ENVIRONMENT != "production" else None,
+    openapi_url="/openapi.json" if is_docs_enabled else None,
+    docs_url="/docs" if is_docs_enabled else None,
+    redoc_url="/redoc" if is_docs_enabled else None,
     lifespan=lifespan,
 )
 
@@ -98,6 +109,21 @@ async def unhandled_exception_handler(request: Request, exc: Exception):
 
 # 4. Mount API Router
 app.include_router(api_router, prefix=settings.API_V1_STR)
+
+
+# 5. Documentation Backwards Compatibility Redirects (when enabled)
+if is_docs_enabled:
+    @app.get(f"{settings.API_V1_STR}/docs", include_in_schema=False)
+    async def redirect_api_docs():
+        return RedirectResponse(url="/docs")
+
+    @app.get(f"{settings.API_V1_STR}/redoc", include_in_schema=False)
+    async def redirect_api_redoc():
+        return RedirectResponse(url="/redoc")
+
+    @app.get(f"{settings.API_V1_STR}/openapi.json", include_in_schema=False)
+    async def redirect_api_openapi():
+        return RedirectResponse(url="/openapi.json")
 
 
 if __name__ == "__main__":

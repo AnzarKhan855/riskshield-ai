@@ -1,0 +1,136 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-09-24T05:38:41.634626+00:00",
+  "models": {
+    "MOD-XGB-001": {
+      "model_id": "MOD-XGB-001",
+      "version": "v1.0.0",
+      "filename": "fraud_detection_xgb_v1.json",
+      "sha256_hash": "3cf85a80ae9e488b960437be2d625f4b7574bfbfb9d819088ed4c297bf8157e3",
+      "framework": "XGBoost",
+      "framework_version": "3.4.1",
+      "model_type": "Fraud Detection",
+      "input_shape": [
+        null,
+        10
+      ],
+      "feature_names": [
+        "amount",
+        "velocity_1h",
+        "velocity_24h",
+        "risk_score_prior",
+        "is_cross_border",
+        "is_new_device",
+        "device_trust_score",
+        "failed_attempts_24h",
+        "merchant_risk_score",
+        "channel_risk"
+      ],
+      "date_created": "2026-09-24T05:38:41.634626+00:00"
+    },
+    "MOD-ONNX-002": {
+      "model_id": "MOD-ONNX-002",
+      "version": "v1.0.0",
+      "filename": "chargeback_onnx_v1.onnx",
+      "sha256_hash": "862be451f11f5021b7ed34d41b013c95fa6f7a7bf353236e719f992e61730bad",
+      "framework": "ONNX",
+      "framework_version": "1.23.0",
+      "model_type": "Chargeback Prediction",
+      "input_shape": [
+        null,
+        10
+      ],
+      "feature_names": [
+        "amount",
+        "velocity_1h",
+        "velocity_24h",
+        "risk_score_prior",
+        "is_cross_border",
+        "is_new_device",
+        "device_trust_score",
+        "failed_attempts_24h",
+        "merchant_risk_score",
+        "channel_risk"
+      ],
+      "date_created": "2026-09-24T05:38:41.634626+00:00"
+    },
+    "MOD-LGBM-003": {
+      "model_id": "MOD-LGBM-003",
+      "version": "v1.0.0",
+      "filename": "merchant_risk_v1.joblib",
+      "sha256_hash": "82be366e2d008c7c81e8f3be47be404a16f4663e572a667db7a586e5a67f0e35",
+      "framework": "Joblib",
+      "framework_version": "1.6.0",
+      "model_type": "Merchant Risk",
+      "input_shape": [
+        null,
+        10
+      ],
+      "feature_names": [
+        "amount",
+        "velocity_1h",
+        "velocity_24h",
+        "risk_score_prior",
+        "is_cross_border",
+        "is_new_device",
+        "device_trust_score",
+        "failed_attempts_24h",
+        "merchant_risk_score",
+        "channel_risk"
+      ],
+      "date_created": "2026-09-24T05:38:41.634626+00:00"
+    },
+    "MOD-RF-004": {
+      "model_id": "MOD-RF-004",
+      "version": "v1.0.0",
+      "filename": "merchant_risk_v1.joblib",
+      "sha256_hash": "82be366e2d008c7c81e8f3be47be404a16f4663e572a667db7a586e5a67f0e35",
+      "framework": "Joblib",
+      "framework_version": "1.6.0",
+      "model_type": "Customer Risk",
+      "input_shape": [
+        null,
+        10
+      ],
+      "feature_names": [
+        "amount",
+        "velocity_1h",
+        "velocity_24h",
+        "risk_score_prior",
+        "is_cross_border",
+        "is_new_device",
+        "device_trust_score",
+        "failed_attempts_24h",
+        "merchant_risk_score",
+        "channel_risk"
+      ],
+      "date_created": "2026-09-24T05:38:41.634626+00:00"
+    },
+    "MOD-ISO-005": {
+      "model_id": "MOD-ISO-005",
+      "version": "v1.0.0",
+      "filename": "device_risk_iso_v1.joblib",
+      "sha256_hash": "20c2b711f9dc9c16a15b4b8685e871a9940f80c584f54d60c8106320c4283708",
+      "framework": "Joblib",
+      "framework_version": "1.6.0",
+      "model_type": "Device Risk",
+      "input_shape": [
+        null,
+        10
+      ],
+      "feature_names": [
+        "amount",
+        "velocity_1h",
+        "velocity_24h",
+        "risk_score_prior",
+        "is_cross_border",
+        "is_new_device",
+        "device_trust_score",
+        "failed_attempts_24h",
+        "merchant_risk_score",
+        "channel_risk"
+      ],
+      "date_created": "2026-09-24T05:38:41.634626+00:00"
+    }
+  }
+}

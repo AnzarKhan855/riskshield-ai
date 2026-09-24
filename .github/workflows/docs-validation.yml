@@ -1,0 +1,21 @@
+name: Documentation & Screenshot Verification
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  verify-screenshots:
+    name: Verify Embedded Documentation Images
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run Image Verification Script
+        run: |
+          node scripts/verify_readme_images.js

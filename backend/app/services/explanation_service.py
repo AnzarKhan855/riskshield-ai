@@ -107,16 +107,31 @@ class ExplanationService:
         # 3. Rule Contributions
         rule_contribs = []
         if dec.triggered_rules:
-            for r_name in dec.triggered_rules:
+            for r_item in dec.triggered_rules:
+                if isinstance(r_item, dict):
+                    r_id = r_item.get("rule_id", f"RULE-{secrets.token_hex(3).upper()}")
+                    r_name = str(r_item.get("rule_name") or r_id)
+                    r_cat = str(r_item.get("rule_category") or r_item.get("category") or "Velocity")
+                    r_sev = str(r_item.get("severity") or ("HIGH" if dec.decision == "BLOCK" else "MEDIUM"))
+                    r_act = str(r_item.get("action") or dec.decision)
+                    r_desc = str(r_item.get("description") or f"Triggered policy rule: {r_name}")
+                else:
+                    r_id = f"RULE-{secrets.token_hex(3).upper()}"
+                    r_name = str(r_item)
+                    r_cat = "Velocity"
+                    r_sev = "HIGH" if dec.decision == "BLOCK" else "MEDIUM"
+                    r_act = dec.decision
+                    r_desc = f"Triggered high severity policy rule: {r_name}"
+
                 rule_contribs.append(
                     {
-                        "rule_id": f"RULE-{secrets.token_hex(3).upper()}",
+                        "rule_id": r_id,
                         "rule_name": r_name,
-                        "rule_category": "Velocity",
-                        "severity": "HIGH" if dec.decision == "BLOCK" else "MEDIUM",
-                        "action": dec.decision,
+                        "rule_category": r_cat,
+                        "severity": r_sev,
+                        "action": r_act,
                         "impact_score": 40.0,
-                        "description": f"Triggered high severity policy rule: {r_name}",
+                        "description": r_desc,
                     }
                 )
 

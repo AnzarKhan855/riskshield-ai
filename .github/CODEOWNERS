@@ -1,0 +1,18 @@
+# Global Code Owners
+* @riskshield-ai/maintainers
+
+# Backend Core & ML Mesh
+/backend/ @riskshield-ai/backend-leads
+/backend/app/domain/ @riskshield-ai/architects
+/backend/app/services/decision_engine.py @riskshield-ai/architects
+
+# Frontend Application
+/frontend/ @riskshield-ai/frontend-leads
+
+# Documentation & Specifications
+/docs/ @riskshield-ai/tech-writers
+
+# DevOps & CI/CD
+/.github/ @riskshield-ai/devops-leads
+/docker/ @riskshield-ai/devops-leads
+/docker-compose*.yml @riskshield-ai/devops-leads

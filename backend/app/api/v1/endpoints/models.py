@@ -1,9 +1,10 @@
 from typing import Any, Optional
 from fastapi import APIRouter, Depends, Query, status
 from app.core.deps import get_current_active_user, get_model_registry_service
+from app.core.rbac import require_roles
 from app.core.response import APIResponse, success_response
 from app.models.model_registry import ModelFramework, ModelStatus, ModelType
-from app.models.user import User
+from app.models.user import User, UserRole
 from app.schemas.model_registry import (
     ModelPromoteRequest,
     ModelRegisterRequest,
@@ -25,7 +26,7 @@ router = APIRouter()
 )
 async def register_model(
     body: ModelRegisterRequest,
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN, UserRole.ANALYST)),
     model_service: ModelRegistryService = Depends(get_model_registry_service),
 ) -> Any:
     result = await model_service.register_model(body, creator_user_id=current_user.id)
@@ -95,7 +96,7 @@ async def get_model(
 async def update_model(
     id: str,
     body: ModelUpdateRequest,
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN, UserRole.ANALYST)),
     model_service: ModelRegistryService = Depends(get_model_registry_service),
 ) -> Any:
     result = await model_service.update_model(id, body, updater_user_id=current_user.id)
@@ -112,7 +113,7 @@ async def update_model(
 )
 async def promote_model(
     body: ModelPromoteRequest,
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN)),
     model_service: ModelRegistryService = Depends(get_model_registry_service),
 ) -> Any:
     result = await model_service.promote_to_production(body.model_id, promoter_user_id=current_user.id)
@@ -129,7 +130,7 @@ async def promote_model(
 )
 async def rollback_model(
     body: ModelRollbackRequest,
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN)),
     model_service: ModelRegistryService = Depends(get_model_registry_service),
 ) -> Any:
     result = await model_service.rollback_production_model(

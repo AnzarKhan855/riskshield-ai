@@ -3,6 +3,11 @@ from dataclasses import dataclass
 from typing import Any, Dict
 
 
+class ModelIntegrityError(Exception):
+    """Raised when model artifact integrity verification fails."""
+    pass
+
+
 @dataclass
 class ModelArtifact:
     model_id: str
@@ -10,6 +15,7 @@ class ModelArtifact:
     framework: str
     version: str
     artifact_instance: Any
+    metadata: Any = None
 
 
 class IModelLoader(ABC):

@@ -8,8 +8,9 @@ from app.core.deps import (
     get_investigation_service,
     get_timeline_service,
 )
+from app.core.rbac import require_roles
 from app.core.response import APIResponse, success_response
-from app.models.user import User
+from app.models.user import User, UserRole
 from app.schemas.investigation import (
     CaseAssignRequest,
     CaseCreateRequest,
@@ -38,7 +39,7 @@ router = APIRouter()
 )
 async def create_case(
     body: CaseCreateRequest,
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN, UserRole.ANALYST)),
     service: InvestigationService = Depends(get_investigation_service),
 ) -> Any:
     full_name = f"{current_user.first_name} {current_user.last_name}"
@@ -107,7 +108,7 @@ async def get_case_workspace(
 async def assign_case(
     id: str,
     body: CaseAssignRequest,
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN, UserRole.ANALYST)),
     service: InvestigationService = Depends(get_investigation_service),
 ) -> Any:
     full_name = f"{current_user.first_name} {current_user.last_name}"
@@ -126,7 +127,7 @@ async def assign_case(
 async def resolve_case(
     id: str,
     body: CaseResolveRequest,
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN, UserRole.ANALYST)),
     service: InvestigationService = Depends(get_investigation_service),
 ) -> Any:
     full_name = f"{current_user.first_name} {current_user.last_name}"
@@ -144,7 +145,7 @@ async def resolve_case(
 )
 async def close_case(
     id: str,
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN, UserRole.ANALYST)),
     service: InvestigationService = Depends(get_investigation_service),
 ) -> Any:
     full_name = f"{current_user.first_name} {current_user.last_name}"
@@ -202,7 +203,7 @@ async def list_case_evidence(
 async def attach_case_evidence(
     id: str,
     body: EvidenceCreateRequest,
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN, UserRole.ANALYST)),
     service: InvestigationService = Depends(get_investigation_service),
     evidence_service: EvidenceService = Depends(get_evidence_service),
 ) -> Any:
@@ -243,7 +244,7 @@ async def list_case_comments(
 async def add_case_comment(
     id: str,
     body: CommentCreateRequest,
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN, UserRole.ANALYST)),
     service: InvestigationService = Depends(get_investigation_service),
     comment_service: CommentService = Depends(get_comment_service),
 ) -> Any:

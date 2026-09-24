@@ -32,14 +32,20 @@ class BaseRepository(Generic[ModelType]):
 
     async def create(self, instance: ModelType) -> ModelType:
         try:
+            if getattr(instance, "id", None) is None:
+                instance.id = uuid.uuid4()
             self.session.add(instance)
             await self.session.commit()
             await self.session.refresh(instance)
             return instance
-        except Exception:
-            if not getattr(instance, "id", None):
-                setattr(instance, "id", uuid.uuid4())
-            return instance
+        except Exception as e:
+            import logging
+            logging.getLogger("riskshield.repository").error(
+                f"Error in BaseRepository.create on {type(instance)} (id={getattr(instance, 'id', None)}): {e}",
+                exc_info=True,
+            )
+            await self.session.rollback()
+            raise
 
     async def update(self, id: uuid.UUID, values: Dict[str, Any]) -> Optional[ModelType]:
         try:
@@ -53,6 +59,7 @@ class BaseRepository(Generic[ModelType]):
             await self.session.commit()
             return await self.get_by_id(id)
         except Exception:
+            await self.session.rollback()
             return None
 
     async def delete(self, id: uuid.UUID) -> bool:
@@ -62,4 +69,5 @@ class BaseRepository(Generic[ModelType]):
             await self.session.commit()
             return result.rowcount > 0
         except Exception:
+            await self.session.rollback()
             return False

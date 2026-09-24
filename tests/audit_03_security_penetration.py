@@ -4,6 +4,7 @@ import json
 import time
 import urllib.request
 import urllib.error
+import urllib.parse
 from typing import Dict, Any, List
 
 BASE_URL = "http://127.0.0.1:8000/api/v1"

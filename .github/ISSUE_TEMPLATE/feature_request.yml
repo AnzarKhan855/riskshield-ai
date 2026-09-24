@@ -1,0 +1,39 @@
+name: 💡 Feature Request
+description: Propose a new feature, model integration, or architectural enhancement
+title: "[FEAT]: "
+labels: ["enhancement", "proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We welcome proposals for new capabilities, model architectures, and developer experience enhancements.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement & Motivation
+      description: Is your feature request related to a specific limitation or business problem? Please describe.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed Technical Solution
+      description: Provide a detailed architectural overview of the suggested feature.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: What other approaches or workarounds have you considered?
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Target Domain
+      options:
+        - MLOps & Model Deployment
+        - Graph Neural Networks & Forensics
+        - Regulatory Explainability (SHAP / Fair Lending)
+        - Latency & Stream Ingestion (<10ms)
+        - Human-in-the-loop Case Workflows
+        - Security & Compliance

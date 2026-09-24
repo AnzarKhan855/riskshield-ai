@@ -51,6 +51,8 @@ services:
       REDIS_PORT: 6379
       JWT_SECRET: ${JWT_SECRET:-production_super_secret_jwt_key_change_me}
       BACKEND_CORS_ORIGINS: '["http://localhost:3000"]'
+      MONGODB_URI: ${MONGODB_URI:-}
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
     ports:
       - "8000:8000"
     depends_on:

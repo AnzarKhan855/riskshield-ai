@@ -193,11 +193,7 @@ class DecisionRuleService:
         )
 
     async def seed_default_rules(self, system_user_id: uuid.UUID) -> None:
-        """Seeds standard enterprise risk & compliance rules if table is empty."""
-        existing, total = await self.rule_repo.filter_and_paginate(size=1)
-        if total > 0:
-            return
-
+        """Seeds standard enterprise risk & compliance rules if missing."""
         default_rules = [
             RuleCreateRequest(
                 rule_name="High Composite Risk Score Block Rule",
@@ -216,6 +212,24 @@ class DecisionRuleService:
                 action="BLOCK",
                 severity="CRITICAL",
                 description="Blocks transactions originating from sanctioned/high-risk countries",
+            ),
+            RuleCreateRequest(
+                rule_name="Critical High Transaction Amount Threshold",
+                rule_category="TRANSACTION",
+                priority=15,
+                expression="txn_amount >= 10000.0",
+                action="BLOCK",
+                severity="CRITICAL",
+                description="Automatically blocks transactions exceeding $10,000 threshold",
+            ),
+            RuleCreateRequest(
+                rule_name="Elevated Amount Review Threshold",
+                rule_category="TRANSACTION",
+                priority=45,
+                expression="txn_amount >= 2500.0 and txn_amount < 10000.0",
+                action="REVIEW",
+                severity="MEDIUM",
+                description="Routes elevated amounts between $2,500 and $10,000 to manual analyst review",
             ),
             RuleCreateRequest(
                 rule_name="Unusual Amount & Night Transaction Escalate",
@@ -238,4 +252,6 @@ class DecisionRuleService:
         ]
 
         for r_dto in default_rules:
-            await self.create_rule(r_dto, system_user_id)
+            existing, _ = await self.rule_repo.filter_and_paginate(search=r_dto.rule_name, size=1)
+            if not existing:
+                await self.create_rule(r_dto, system_user_id)

@@ -55,9 +55,9 @@ def run_integration_audit():
     signup_payload = {
         "email": email,
         "first_name": "Integration",
-        "last_name": "Admin",
+        "last_name": "Analyst",
         "password": "SecurePassword123!",
-        "role": "Admin",
+        "role": "Analyst",
     }
     status_code, resp_headers, signup_data = make_request(
         f"{BASE_URL}/auth/signup", method="POST", data=signup_payload, headers={"Origin": "http://localhost:3000"}

@@ -1,0 +1,23 @@
+changelog:
+  categories:
+    - title: 🚀 Features & Decision Engine Enhancements
+      labels:
+        - "feature"
+        - "enhancement"
+    - title: 🐛 Bug Fixes & Stability
+      labels:
+        - "bug"
+        - "fix"
+    - title: ⚡ Performance & Sub-15ms Latency Optimizations
+      labels:
+        - "performance"
+    - title: 🔒 Security & Compliance Updates
+      labels:
+        - "security"
+    - title: 📚 Documentation & System Design Whitepapers
+      labels:
+        - "documentation"
+    - title: 🧰 Maintenance & Dependencies
+      labels:
+        - "dependencies"
+        - "ci/cd"

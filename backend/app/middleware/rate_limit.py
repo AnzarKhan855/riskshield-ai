@@ -28,10 +28,25 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
             return await call_next(request)
 
         path = request.url.path
-        if path.startswith("/api/v1/health") or path.startswith("/docs") or path.startswith("/openapi"):
+        if (
+            path.startswith("/api/v1/health")
+            or path.startswith("/docs")
+            or path.startswith("/redoc")
+            or path.startswith("/openapi")
+            or path.startswith("/api/v1/docs")
+            or path.startswith("/api/v1/redoc")
+            or path.startswith("/api/v1/openapi")
+        ):
             return await call_next(request)
 
-        client_ip = request.client.host if request.client else "127.0.0.1"
+        forwarded = request.headers.get("x-forwarded-for")
+        sim_user = request.headers.get("x-simulated-user-id")
+        if sim_user:
+            client_ip = f"sim-{sim_user}"
+        elif forwarded:
+            client_ip = forwarded.split(",")[0].strip()
+        else:
+            client_ip = request.client.host if request.client else "127.0.0.1"
         now = time.time()
 
         # Clean old requests
