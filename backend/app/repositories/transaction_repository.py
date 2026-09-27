@@ -64,6 +64,7 @@ class TransactionRepository(BaseRepository[Transaction]):
             await self.session.commit()
             return result.rowcount > 0
         except Exception:
+            await self.session.rollback()
             return False
 
     async def filter_and_paginate(

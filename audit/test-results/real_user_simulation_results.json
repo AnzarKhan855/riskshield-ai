@@ -1,0 +1,669 @@
+{
+  "workflow": "Workflow A - Real User End-to-End Simulation",
+  "timestamp": 1790228881.9661834,
+  "steps": [
+    {
+      "step": 1,
+      "name": "Open Application & Ping System Health",
+      "status": "PASS",
+      "data": {
+        "success": true,
+        "message": "System operational",
+        "data": {
+          "status": "HEALTHY",
+          "environment": "development",
+          "uptime_seconds": 229.22,
+          "timestamp": "2026-09-24T05:48:01.987159+00:00"
+        },
+        "error": null,
+        "meta": null
+      }
+    },
+    {
+      "step": 2,
+      "name": "Register New Analyst User Account",
+      "status": "PASS",
+      "data": {
+        "success": true,
+        "message": "User account created successfully",
+        "data": {
+          "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTAyMzYwODIsInN1YiI6IjNmNjlhNDNkLTBjYzYtNGE2OC1hNDFlLWY3MDAwYTg2ODc2YyIsInJvbGUiOiJBbmFseXN0IiwidHlwZSI6ImFjY2VzcyIsImp0aSI6Ijk4NzNhYjkyLWM3YjYtNGZhYi05NGI3LTQ1MzllNDU5OGFjNSIsImlhdCI6MTc5MDIyODg4Mn0.TkW1psf8r7obmYSu1fFjN4HFw_99U4Yulke7bpjnVLo",
+          "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTA4MzM2ODIsInN1YiI6IjNmNjlhNDNkLTBjYzYtNGE2OC1hNDFlLWY3MDAwYTg2ODc2YyIsInR5cGUiOiJyZWZyZXNoIiwianRpIjoiYjg4ZWFmMTctN2RhNC00NWU4LWEzZGMtMDdjYzIwMWQ5NTE1IiwiaWF0IjoxNzkwMjI4ODgyfQ.EVcDG4BrA6GKwqb_DGwMZ4qDf2Mo_oivgi6Dsk5_vpM",
+          "token_type": "bearer",
+          "user": {
+            "first_name": "Maya",
+            "last_name": "Lin",
+            "email": "analyst_sim_1790228881@riskshield.ai",
+            "phone": null,
+            "id": "3f69a43d-0cc6-4a68-a41e-f7000a86876c",
+            "role": "Analyst",
+            "status": "Active",
+            "email_verified": false,
+            "last_login": null,
+            "created_at": "2026-09-24T05:48:02.189177",
+            "updated_at": "2026-09-24T05:48:02.189177"
+          }
+        },
+        "error": null,
+        "meta": null
+      }
+    },
+    {
+      "step": 3,
+      "name": "Authenticate & Acquire JWT Session Tokens",
+      "status": "PASS",
+      "data": {
+        "token_acquired": true
+      }
+    },
+    {
+      "step": 4,
+      "name": "Reach Dashboard & Verify Operator Identity",
+      "status": "PASS",
+      "data": {
+        "success": true,
+        "message": "Current user profile retrieved",
+        "data": {
+          "first_name": "Maya",
+          "last_name": "Lin",
+          "email": "analyst_sim_1790228881@riskshield.ai",
+          "phone": null,
+          "id": "3f69a43d-0cc6-4a68-a41e-f7000a86876c",
+          "role": "Analyst",
+          "status": "Active",
+          "email_verified": false,
+          "last_login": "2026-09-24T05:48:02.412092",
+          "created_at": "2026-09-24T05:48:02.189177",
+          "updated_at": "2026-09-24T05:48:02.412092"
+        },
+        "error": null,
+        "meta": null
+      }
+    },
+    {
+      "step": 5,
+      "name": "Navigate Major Platform Hubs & Catalogs",
+      "status": "PASS",
+      "data": {
+        "pages_navigated": 6
+      }
+    },
+    {
+      "step": 6,
+      "name": "Resolve Active Merchant Context",
+      "status": "PASS",
+      "data": {
+        "merchant_id": "7f346f9f-1d56-4b27-bc08-76f497462809"
+      }
+    },
+    {
+      "step": 7,
+      "name": "Submit High-Value Transaction for Ingestion",
+      "status": "PASS",
+      "data": {
+        "success": true,
+        "message": "Transaction created successfully",
+        "data": {
+          "merchant_id": "7f346f9f-1d56-4b27-bc08-76f497462809",
+          "customer_id": null,
+          "payment_method": "Credit Card",
+          "card_network": "VISA",
+          "card_bin": null,
+          "currency": "USD",
+          "amount": 4750.0,
+          "fee": 0.0,
+          "tax": 0.0,
+          "status": "Pending",
+          "transaction_type": "Payment",
+          "country": "United States",
+          "state": "California",
+          "city": "San Francisco",
+          "ip_address": null,
+          "device_id": "DEV-SIM-MACBOOK-01",
+          "device_type": null,
+          "operating_system": null,
+          "browser": null,
+          "latitude": null,
+          "longitude": null,
+          "reference_number": null,
+          "gateway_response": null,
+          "failure_reason": null,
+          "id": "c998768d-bed2-400d-814b-5e52cdcd95c1",
+          "transaction_id": "TXN-8086B8AA",
+          "net_amount": 4750.0,
+          "timestamp": "2026-09-24T05:48:02.602176",
+          "is_deleted": false,
+          "created_at": "2026-09-24T05:48:02.602180",
+          "updated_at": "2026-09-24T05:48:02.602181"
+        },
+        "error": null,
+        "meta": null
+      }
+    },
+    {
+      "step": 8,
+      "name": "Trigger & Wait for Multi-Model Risk Evaluation",
+      "status": "PASS",
+      "data": {
+        "id": "63d75173-ed3d-4bb1-8fed-71156246556f",
+        "decision_id": "DEC-D1318AF7",
+        "composite_prediction_id": "ORCH-69B8A08E",
+        "transaction_id": "TXN-8086B8AA",
+        "merchant_id": "7f346f9f-1d56-4b27-bc08-76f497462809",
+        "customer_id": null,
+        "decision": "REVIEW",
+        "decision_status": "FINAL",
+        "decision_confidence": 0.85,
+        "composite_risk_score": 23.79,
+        "decision_reason": "Triggered rule 'Elevated Amount Review Threshold' (RULE-FF9059A6) with action REVIEW.",
+        "triggered_rules": [
+          {
+            "rule_id": "RULE-FF9059A6",
+            "rule_name": "Elevated Amount Review Threshold",
+            "category": "TRANSACTION",
+            "action": "REVIEW",
+            "severity": "MEDIUM",
+            "priority": 45
+          }
+        ],
+        "triggered_policies": [],
+        "execution_time_ms": 90.8,
+        "decision_source": "AUTOMATED_RULE_ENGINE",
+        "reviewer_id": null,
+        "review_status": "NONE",
+        "decision_metadata": {
+          "evaluator_user_id": "3f69a43d-0cc6-4a68-a41e-f7000a86876c",
+          "total_rules_evaluated": 11,
+          "matched_rules_count": 1
+        },
+        "created_at": "2026-09-24T05:48:02.725951",
+        "updated_at": "2026-09-24T05:48:02.725956"
+      }
+    },
+    {
+      "step": 9,
+      "name": "Inspect Composite Risk Score",
+      "status": "PASS",
+      "data": {
+        "composite_risk_score": 23.79
+      }
+    },
+    {
+      "step": 10,
+      "name": "Inspect Final Decision Action",
+      "status": "PASS",
+      "data": {
+        "decision": "REVIEW"
+      }
+    },
+    {
+      "step": 11,
+      "name": "Inspect Decision Explainability Report",
+      "status": "PASS",
+      "data": {
+        "success": true,
+        "message": "AI explanation retrieved successfully",
+        "data": {
+          "id": "8c8932cb-158b-4a00-b192-3a3682e24e25",
+          "explanation_id": "EXP-372AA60F",
+          "decision_id": "DEC-D1318AF7",
+          "transaction_id": "TXN-8086B8AA",
+          "merchant_id": "7f346f9f-1d56-4b27-bc08-76f497462809",
+          "customer_id": null,
+          "composite_risk_score": 23.79,
+          "confidence_score": 99.9,
+          "primary_reason": "Decision 'REVIEW' produced low composite risk score of 23.8/100 with baseline parameters.",
+          "feature_contributions": [
+            {
+              "feature_name": "Transaction Amount",
+              "feature_value": 4750.0,
+              "importance_score": 0.35,
+              "shap_value": -0.05,
+              "direction": "DECREASES_RISK",
+              "description": "Transaction Amount is set to 4750.0, which decreases risk."
+            }
+          ],
+          "model_contributions": [
+            {
+              "model_id": "MODEL-XGB-01",
+              "model_name": "XGBoost Fraud Classifier",
+              "model_type": "Fraud Detection",
+              "weight": 0.5,
+              "risk_score": 23.79,
+              "contribution_score": 11.895,
+              "status": "Active"
+            },
+            {
+              "model_id": "MODEL-ONNX-02",
+              "model_name": "ONNX Deep Velocity Model",
+              "model_type": "Behaviour Analysis",
+              "weight": 0.5,
+              "risk_score": 23.79,
+              "contribution_score": 11.895,
+              "status": "Active"
+            }
+          ],
+          "rule_contributions": [
+            {
+              "rule_id": "RULE-FF9059A6",
+              "rule_name": "Elevated Amount Review Threshold",
+              "rule_category": "TRANSACTION",
+              "severity": "MEDIUM",
+              "action": "REVIEW",
+              "impact_score": 40.0,
+              "description": "Triggered policy rule: Elevated Amount Review Threshold"
+            }
+          ],
+          "recommendations": [
+            {
+              "action_type": "REQUEST_3DS",
+              "title": "Step-Up 3D Secure Authentication",
+              "rationale": "Enforce mandatory 3DS OTP verification for subsequent payment attempts.",
+              "priority": "MEDIUM",
+              "metadata": {}
+            },
+            {
+              "action_type": "VERIFY_IDENTITY",
+              "title": "Perform Out-of-Band Phone Verification",
+              "rationale": "Call customer phone number on record to confirm transaction authorization.",
+              "priority": "MEDIUM",
+              "metadata": {}
+            }
+          ],
+          "audit_info": {
+            "audit_hash": "sha256:52e5afc6b1c511fdb5ff0316fd85466f7ad3a3165e7f135688a400b271422f86",
+            "engine_version": "RiskShield-XAI-v2.4",
+            "compliance_standard": "PCI-DSS v4.0 / SOC2 Type II / EU AI Act",
+            "audited_at": "2026-09-24T05:48:02.828377+00:00",
+            "verifiable": true
+          },
+          "created_at": "2026-09-24T05:48:02.831936",
+          "updated_at": "2026-09-24T05:48:02.831939"
+        },
+        "error": null,
+        "meta": null
+      }
+    },
+    {
+      "step": 12,
+      "name": "Inspect Contributing Factors & Triggered Policy Rules",
+      "status": "PASS",
+      "data": {
+        "triggered_rules": [
+          {
+            "rule_id": "RULE-FF9059A6",
+            "rule_name": "Elevated Amount Review Threshold",
+            "category": "TRANSACTION",
+            "action": "REVIEW",
+            "severity": "MEDIUM",
+            "priority": 45
+          }
+        ]
+      }
+    },
+    {
+      "step": 13,
+      "name": "Inspect AI Recommendation & System Rationale",
+      "status": "PASS",
+      "data": {
+        "reason": "Triggered rule 'Elevated Amount Review Threshold' (RULE-FF9059A6) with action REVIEW."
+      }
+    },
+    {
+      "step": 14,
+      "name": "Open Transaction Dossier & Detail View",
+      "status": "PASS",
+      "data": {
+        "success": true,
+        "message": "Transaction details retrieved",
+        "data": {
+          "merchant_id": "7f346f9f-1d56-4b27-bc08-76f497462809",
+          "customer_id": null,
+          "payment_method": "Credit Card",
+          "card_network": "VISA",
+          "card_bin": null,
+          "currency": "USD",
+          "amount": 4750.0,
+          "fee": 0.0,
+          "tax": 0.0,
+          "status": "Pending",
+          "transaction_type": "Payment",
+          "country": "United States",
+          "state": "California",
+          "city": "San Francisco",
+          "ip_address": null,
+          "device_id": "DEV-SIM-MACBOOK-01",
+          "device_type": null,
+          "operating_system": null,
+          "browser": null,
+          "latitude": null,
+          "longitude": null,
+          "reference_number": null,
+          "gateway_response": null,
+          "failure_reason": null,
+          "id": "c998768d-bed2-400d-814b-5e52cdcd95c1",
+          "transaction_id": "TXN-8086B8AA",
+          "net_amount": 4750.0,
+          "timestamp": "2026-09-24T05:48:02.602176",
+          "is_deleted": false,
+          "created_at": "2026-09-24T05:48:02.602180",
+          "updated_at": "2026-09-24T05:48:02.602181"
+        },
+        "error": null,
+        "meta": null
+      }
+    },
+    {
+      "step": 15,
+      "name": "Create New Investigation Case Record",
+      "status": "PASS",
+      "data": {
+        "id": "31cf62c3-7722-45ca-9471-777f77a9fb49",
+        "case_id": "CASE-8CEA7BE9",
+        "decision_id": null,
+        "transaction_id": "TXN-8086B8AA",
+        "merchant_id": "7f346f9f-1d56-4b27-bc08-76f497462809",
+        "customer_id": null,
+        "assigned_analyst_id": null,
+        "assigned_analyst_name": null,
+        "priority": "HIGH",
+        "status": "OPEN",
+        "category": "Fraud",
+        "severity": "HIGH",
+        "case_title": "Operator Investigation: TXN-8086B8AA",
+        "case_description": "Manual case opened following elevated velocity and unusual transaction amount.",
+        "resolution": null,
+        "resolution_notes": null,
+        "opened_at": "2026-09-24T05:48:02.898187",
+        "assigned_at": null,
+        "resolved_at": null,
+        "closed_at": null,
+        "case_metadata": {
+          "creator_user_id": "3f69a43d-0cc6-4a68-a41e-f7000a86876c",
+          "created_via": "INVESTIGATION_WORKSPACE"
+        },
+        "created_at": "2026-09-24T05:48:02.898527",
+        "updated_at": "2026-09-24T05:48:02.898529"
+      }
+    },
+    {
+      "step": 16,
+      "name": "Attach Forensic Evidence Item to Case Dossier",
+      "status": "PASS",
+      "data": {
+        "success": true,
+        "message": "Evidence attached successfully",
+        "data": {
+          "id": "765a7776-0734-4c3f-827c-9c5b63bca90f",
+          "evidence_id": "EVD-18691CB6",
+          "case_id": "31cf62c3-7722-45ca-9471-777f77a9fb49",
+          "evidence_type": "DEVICE_TELEMETRY",
+          "title": "Device Fingerprint & IP Geolocation Mismatch",
+          "description": "Operator confirmed new device fingerprint associated with international IP.",
+          "reference_id": "TXN-SIM-2083BDED",
+          "metadata_json": {
+            "analyst": "analyst_sim_1790228881@riskshield.ai",
+            "verified_ip": "198.51.100.24"
+          },
+          "created_by": "Maya Lin",
+          "created_at": "2026-09-24T05:48:02.940619"
+        },
+        "error": null,
+        "meta": null
+      }
+    },
+    {
+      "step": 17,
+      "name": "Add Analyst Case Comment & Update Timeline",
+      "status": "PASS",
+      "data": {
+        "success": true,
+        "message": "Analyst comment added successfully",
+        "data": {
+          "id": "ce6b6748-de6a-42bc-8dc0-e25e77c8c899",
+          "comment_id": "CMT-C4122A15",
+          "case_id": "31cf62c3-7722-45ca-9471-777f77a9fb49",
+          "author_id": "3f69a43d-0cc6-4a68-a41e-f7000a86876c",
+          "author_name": "Maya Lin",
+          "comment": "Case thoroughly reviewed. Escalating to Senior Risk Lead for secondary approval.",
+          "created_at": "2026-09-24T05:48:02.952447"
+        },
+        "error": null,
+        "meta": null
+      }
+    },
+    {
+      "step": 18,
+      "name": "Verify Complete Case Timeline & Audit History",
+      "status": "PASS",
+      "data": {
+        "success": true,
+        "message": "Case timeline retrieved successfully",
+        "data": [
+          {
+            "id": "0d495080-559f-4929-a4d9-cda2cd15b105",
+            "timeline_id": "TML-1E135D38",
+            "case_id": "31cf62c3-7722-45ca-9471-777f77a9fb49",
+            "action": "CASE_CREATED",
+            "actor": "Maya Lin",
+            "details": {
+              "case_id": "CASE-8CEA7BE9",
+              "priority": "HIGH",
+              "category": "Fraud"
+            },
+            "created_at": "2026-09-24T05:48:02.921871"
+          }
+        ],
+        "error": null,
+        "meta": null
+      }
+    },
+    {
+      "step": 19,
+      "name": "Simulate User Logout & Clear Client Session Tokens",
+      "status": "PASS",
+      "data": {
+        "client_session": "cleared"
+      }
+    },
+    {
+      "step": 20,
+      "name": "Re-Login & Re-Authenticate User Session",
+      "status": "PASS",
+      "data": {
+        "relogin_success": true
+      }
+    },
+    {
+      "step": 21,
+      "name": "Verify Complete Data Persistence Across Sessions",
+      "status": "PASS",
+      "data": {
+        "success": true,
+        "message": "Investigation workspace payload retrieved successfully",
+        "data": {
+          "case_details": {
+            "id": "31cf62c3-7722-45ca-9471-777f77a9fb49",
+            "case_id": "CASE-8CEA7BE9",
+            "decision_id": null,
+            "transaction_id": "TXN-8086B8AA",
+            "merchant_id": "7f346f9f-1d56-4b27-bc08-76f497462809",
+            "customer_id": null,
+            "assigned_analyst_id": null,
+            "assigned_analyst_name": null,
+            "priority": "HIGH",
+            "status": "OPEN",
+            "category": "Fraud",
+            "severity": "HIGH",
+            "case_title": "Operator Investigation: TXN-8086B8AA",
+            "case_description": "Manual case opened following elevated velocity and unusual transaction amount.",
+            "resolution": null,
+            "resolution_notes": null,
+            "opened_at": "2026-09-24T05:48:02.898187",
+            "assigned_at": null,
+            "resolved_at": null,
+            "closed_at": null,
+            "case_metadata": {
+              "creator_user_id": "3f69a43d-0cc6-4a68-a41e-f7000a86876c",
+              "created_via": "INVESTIGATION_WORKSPACE"
+            },
+            "created_at": "2026-09-24T05:48:02.898527",
+            "updated_at": "2026-09-24T05:48:02.898529"
+          },
+          "evidence_list": [
+            {
+              "id": "4e5fd447-4c03-49df-a282-557528d4f00a",
+              "evidence_id": "EVD-0808AD65",
+              "case_id": "31cf62c3-7722-45ca-9471-777f77a9fb49",
+              "evidence_type": "TRANSACTION",
+              "title": "Transaction TXN-8086B8AA Details",
+              "description": "Amount: $4750.00 USD, Method: PaymentMethod.CREDIT_CARD, Card: VISA",
+              "reference_id": "TXN-8086B8AA",
+              "metadata_json": {
+                "amount": 4750.0,
+                "currency": "USD",
+                "payment_method": "Credit Card",
+                "status": "Pending",
+                "country": "United States"
+              },
+              "created_by": "Automated Discovery Engine",
+              "created_at": "2026-09-24T05:48:02.906884"
+            },
+            {
+              "id": "7c4d5a75-a101-49d4-b64a-22d708dde555",
+              "evidence_id": "EVD-A43A79B7",
+              "case_id": "31cf62c3-7722-45ca-9471-777f77a9fb49",
+              "evidence_type": "FEATURE_SNAPSHOT",
+              "title": "Feature Vector FV-DFDD0A13 Snapshot",
+              "description": "Evaluated 61 features under schema v1.0",
+              "reference_id": "FV-DFDD0A13",
+              "metadata_json": {
+                "txn_amount": 4750.0,
+                "txn_currency": "USD",
+                "txn_hour": 5,
+                "txn_day_of_week": 3,
+                "txn_is_weekend": false,
+                "txn_payment_method": "Credit Card",
+                "txn_card_network": "VISA",
+                "txn_type": "Payment",
+                "cust_ltv": 0.0,
+                "cust_avg_txn_amount": 0.0,
+                "cust_max_txn_amount": 0.0,
+                "cust_refund_ratio": 0.0,
+                "cust_chargeback_ratio": 0.0,
+                "cust_successful_payments": 0,
+                "cust_failed_payments": 0,
+                "cust_days_since_last_txn": -1,
+                "merchant_age_days": 3,
+                "merchant_reputation_score": 90.0,
+                "merchant_approval_rate": 0.96,
+                "merchant_chargeback_rate": 0.005,
+                "merchant_refund_rate": 0.015,
+                "merchant_daily_volume": 5000.0,
+                "merchant_monthly_volume": 150000.0,
+                "dev_is_new": true,
+                "dev_age_days": 0,
+                "dev_vpn_detected": false,
+                "dev_emulator_detected": false,
+                "dev_rooted_detected": false,
+                "dev_jailbroken_detected": false,
+                "dev_failure_rate": 0.0,
+                "dev_success_rate": 1.0,
+                "velocity_txns_1m": 0,
+                "velocity_txns_5m": 0,
+                "velocity_txns_1h": 0,
+                "velocity_txns_24h": 0,
+                "velocity_failed_attempts_1h": 0,
+                "velocity_multiple_cards_used": false,
+                "velocity_multiple_ips_used": false,
+                "beh_first_time_merchant": true,
+                "beh_first_time_device": true,
+                "beh_unusual_amount": false,
+                "beh_is_night_txn": true,
+                "beh_is_holiday_txn": false,
+                "beh_different_browser": false,
+                "beh_different_os": false,
+                "loc_is_new_country": false,
+                "loc_is_new_city": false,
+                "loc_distance_from_prev_txn_km": 0.0,
+                "loc_impossible_travel_flag": false,
+                "loc_is_high_risk_country": false,
+                "hist_last_txn_amount": 0.0,
+                "hist_prev_txn_gap_hours": -1.0,
+                "hist_avg_daily_spend": 4750.0,
+                "hist_rolling_mean_7d": 4750.0,
+                "hist_rolling_std_7d": 0.0,
+                "pay_is_international_card": false,
+                "pay_is_prepaid_card": false,
+                "pay_card_bin_country_match": true,
+                "risk_customer_flag_count": 0,
+                "risk_device_flag_count": 0,
+                "risk_composite_raw_score": 0.0
+              },
+              "created_by": "Automated Discovery Engine",
+              "created_at": "2026-09-24T05:48:02.916124"
+            },
+            {
+              "id": "765a7776-0734-4c3f-827c-9c5b63bca90f",
+              "evidence_id": "EVD-18691CB6",
+              "case_id": "31cf62c3-7722-45ca-9471-777f77a9fb49",
+              "evidence_type": "DEVICE_TELEMETRY",
+              "title": "Device Fingerprint & IP Geolocation Mismatch",
+              "description": "Operator confirmed new device fingerprint associated with international IP.",
+              "reference_id": "TXN-SIM-2083BDED",
+              "metadata_json": {
+                "analyst": "analyst_sim_1790228881@riskshield.ai",
+                "verified_ip": "198.51.100.24"
+              },
+              "created_by": "Maya Lin",
+              "created_at": "2026-09-24T05:48:02.940619"
+            }
+          ],
+          "comments_list": [
+            {
+              "id": "ce6b6748-de6a-42bc-8dc0-e25e77c8c899",
+              "comment_id": "CMT-C4122A15",
+              "case_id": "31cf62c3-7722-45ca-9471-777f77a9fb49",
+              "author_id": "3f69a43d-0cc6-4a68-a41e-f7000a86876c",
+              "author_name": "Maya Lin",
+              "comment": "Case thoroughly reviewed. Escalating to Senior Risk Lead for secondary approval.",
+              "created_at": "2026-09-24T05:48:02.952447"
+            }
+          ],
+          "timeline_list": [
+            {
+              "id": "0d495080-559f-4929-a4d9-cda2cd15b105",
+              "timeline_id": "TML-1E135D38",
+              "case_id": "31cf62c3-7722-45ca-9471-777f77a9fb49",
+              "action": "CASE_CREATED",
+              "actor": "Maya Lin",
+              "details": {
+                "case_id": "CASE-8CEA7BE9",
+                "priority": "HIGH",
+                "category": "Fraud"
+              },
+              "created_at": "2026-09-24T05:48:02.921871"
+            }
+          ],
+          "decision_summary": null,
+          "transaction_summary": {
+            "transaction_id": "TXN-8086B8AA",
+            "amount": 4750.0,
+            "currency": "USD",
+            "payment_method": "Credit Card",
+            "card_network": "VISA",
+            "status": "Pending",
+            "country": "United States"
+          }
+        },
+        "error": null,
+        "meta": null
+      }
+    }
+  ],
+  "summary": {
+    "total_steps": 21,
+    "passed": 21,
+    "failed": 0
+  }
+}

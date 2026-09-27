@@ -16,33 +16,49 @@ class AuditLogRepository(BaseRepository[AuditLog]):
     async def log_action(
         self,
         action: str,
-        user_id: Optional[uuid.UUID] = None,
+        user_id: Optional[Any] = None,
         ip_address: Optional[str] = None,
         user_agent: Optional[str] = None,
         details: Optional[Dict[str, Any]] = None,
     ) -> AuditLog:
+        safe_user_id = None
+        if user_id is not None:
+            if isinstance(user_id, uuid.UUID):
+                safe_user_id = user_id
+            else:
+                try:
+                    safe_user_id = uuid.UUID(str(user_id))
+                except (ValueError, AttributeError):
+                    safe_user_id = None
+
         audit_log = AuditLog(
             id=uuid.uuid4(),
-            user_id=user_id,
+            user_id=safe_user_id,
             action=action,
             ip_address=ip_address,
             user_agent=user_agent,
             details=details,
         )
 
-        # Asynchronously sync to MongoDB Atlas audit_logs
+        # Non-blocking sync to MongoDB Atlas audit_logs
         try:
             mongo_db = get_mongo_db()
             if mongo_db is not None:
-                await mongo_db["audit_logs"].insert_one({
-                    "id": str(audit_log.id),
-                    "action": action,
-                    "user_id": str(user_id) if user_id else None,
-                    "ip_address": ip_address,
-                    "user_agent": user_agent,
-                    "details": details or {},
-                    "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-                })
+                import asyncio
+                async def _sync_mongo_audit():
+                    try:
+                        await mongo_db["audit_logs"].insert_one({
+                            "id": str(audit_log.id),
+                            "action": action,
+                            "user_id": str(user_id) if user_id else None,
+                            "ip_address": ip_address,
+                            "user_agent": user_agent,
+                            "details": details or {},
+                            "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                        })
+                    except Exception:
+                        pass
+                asyncio.create_task(_sync_mongo_audit())
         except Exception:
             pass
 

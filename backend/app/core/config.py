@@ -6,7 +6,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=(".env", "backend/.env"),
         env_file_encoding="utf-8",
         case_sensitive=True,
         extra="ignore"
@@ -33,11 +33,17 @@ class Settings(BaseSettings):
 
     @property
     def EFFECTIVE_MONGODB_URL(self) -> str:
-        return self.MONGODB_URI or self.MONGODB_URL
+        url = self.MONGODB_URI or self.MONGODB_URL
+        if url:
+            if url.startswith("MONGODB_URI="):
+                url = url.replace("MONGODB_URI=", "", 1).strip()
+            elif url.startswith("MONGODB_URL="):
+                url = url.replace("MONGODB_URL=", "", 1).strip()
+        return url
 
     # Groq AI Parameters
     GROQ_API_KEY: str = ""
-    GROQ_MODEL: str = "llama-3.1-8b-instant"
+    GROQ_MODEL: str = "qwen/qwen3.8-27b"
 
     # DB Connection Pool Config
     DB_ECHO: bool = False
@@ -49,6 +55,11 @@ class Settings(BaseSettings):
     def ASYNC_DATABASE_URI(self) -> str:
         if self.DATABASE_URL:
             url = self.DATABASE_URL
+            if "sqlite" in url:
+                import os
+                base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+                db_path = os.path.join(base_dir, "riskshield.db").replace("\\", "/")
+                return f"sqlite+aiosqlite:///{db_path}"
             if url.startswith("postgres://"):
                 url = url.replace("postgres://", "postgresql+asyncpg://", 1)
             elif url.startswith("postgresql://") and not url.startswith("postgresql+asyncpg://"):

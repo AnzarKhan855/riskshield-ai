@@ -26,11 +26,18 @@ htmlcov/
 
 # Environment files
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
 *.env
+backend/.env
+backend/.env.*
+frontend/.env
+frontend/.env.*
+frontend/.env.local
+
+# Databases & local state
+*.db
+*.sqlite
+*.sqlite3
 
 # IDEs & Editors
 .vscode/
@@ -50,3 +57,7 @@ redisdata/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Scratch & Temporary Run Artifacts
+scratch/
+tests/scratch/

@@ -61,33 +61,48 @@ class InferenceService:
         start_time = time.perf_counter()
 
         # 1. Resolve Feature Vector
-        feature_record = await self.feature_repo.get_by_txn_id(dto.transaction_id)
-        if not feature_record:
-            # Generate feature vector on the fly if not already computed
-            feature_resp = await self.feature_service.generate_features(
-                dto.transaction_id, executor_user_id
-            )
-            feature_payload = feature_resp.feature_payload
-            vec_id = feature_resp.feature_vector_id
-            feature_ver = feature_resp.feature_version
+        if getattr(dto, "features", None) and isinstance(dto.features, dict):
+            feature_payload = dto.features
+            vec_id = getattr(dto, "feature_vector_id", None) or "FV-CUSTOM"
+            feature_ver = "v1.0"
         else:
-            feature_payload = feature_record.feature_payload
-            vec_id = feature_record.feature_vector_id
-            feature_ver = feature_record.feature_version
-
-        # 2. Resolve Active Production Model
-        model_record = await self.model_repo.get_production_model_by_type(dto.model_type)
-        if not model_record:
-            # Fallback to any active model of model_type if explicit production flag not set
-            items, _ = await self.model_repo.filter_and_paginate(
-                model_type=dto.model_type, size=1
-            )
-            if items:
-                model_record = items[0]
-            else:
-                raise NotFoundException(
-                    f"No active ML model found in registry for model type '{dto.model_type.value}'."
+            feature_record = await self.feature_repo.get_by_txn_id(dto.transaction_id)
+            if not feature_record:
+                # Generate feature vector on the fly if not already computed
+                feature_resp = await self.feature_service.generate_features(
+                    dto.transaction_id, executor_user_id
                 )
+                feature_payload = feature_resp.feature_payload
+                vec_id = feature_resp.feature_vector_id
+                feature_ver = feature_resp.feature_version
+            else:
+                feature_payload = feature_record.feature_payload
+                vec_id = feature_record.feature_vector_id
+                feature_ver = feature_record.feature_version
+
+        # 2. Resolve Model (via model_id if provided, else production model by type)
+        model_record = None
+        if getattr(dto, "model_id", None):
+            try:
+                m_uuid = uuid.UUID(str(dto.model_id))
+                model_record = await self.model_repo.get_by_id(m_uuid)
+            except (ValueError, TypeError):
+                model_record = await self.model_repo.get_by_model_id(str(dto.model_id))
+
+        if not model_record:
+            m_type = dto.model_type or ModelType.FRAUD_DETECTION
+            model_record = await self.model_repo.get_production_model_by_type(m_type)
+            if not model_record:
+                # Fallback to any active model of model_type if explicit production flag not set
+                items, _ = await self.model_repo.filter_and_paginate(
+                    model_type=m_type, size=1
+                )
+                if items:
+                    model_record = items[0]
+                else:
+                    raise NotFoundException(
+                        f"No active ML model found in registry for model type '{m_type.value}'."
+                    )
 
         # 3. Resolve Model Loader via Factory & Execute Inference
         loader = self.loader_factory.get_loader(model_record.framework.value)

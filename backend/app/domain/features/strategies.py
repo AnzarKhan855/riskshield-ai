@@ -230,11 +230,14 @@ class LocationFeatureStrategy(BaseFeatureStrategy):
         cust = context.customer
 
         is_new_country = False
-        if cust and cust.country:
-            is_new_country = txn.country.lower() != cust.country.lower()
+        txn_country = (txn.country or "").lower().strip() if txn and txn.country else ""
+        cust_country = (cust.country or "").lower().strip() if cust and cust.country else ""
 
-        high_risk_countries = {"north korea", "iran", "syria", "cuba", "sudan"}
-        is_high_risk = txn.country.lower() in high_risk_countries
+        if cust_country and txn_country:
+            is_new_country = txn_country != cust_country
+
+        high_risk_countries = {"north korea", "iran", "syria", "cuba", "sudan", "nigeria", "russia"}
+        is_high_risk = txn_country in high_risk_countries if txn_country else False
 
         return {
             "loc_is_new_country": is_new_country,
@@ -292,7 +295,7 @@ class PaymentFeatureStrategy(BaseFeatureStrategy):
     def compute(self, context: FeatureContext) -> Dict[str, Any]:
         txn = context.transaction
         is_intl = False
-        if txn.currency.upper() != "USD":
+        if txn and txn.currency and str(txn.currency).upper() != "USD":
             is_intl = True
 
         return {

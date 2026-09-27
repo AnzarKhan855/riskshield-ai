@@ -53,6 +53,8 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - JWT_SECRET=${JWT_SECRET:-super_secret_riskshield_key_change_in_production}
+      - MONGODB_URI=${MONGODB_URI:-}
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
     ports:
       - "${BACKEND_PORT:-8000}:8000"
     depends_on:
@@ -79,6 +81,8 @@ services:
       - POSTGRES_DB=${POSTGRES_DB:-riskshield_db}
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+      - MONGODB_URI=${MONGODB_URI:-}
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
     depends_on:
       redis:
         condition: service_healthy
@@ -96,7 +100,7 @@ services:
     ports:
       - "${FRONTEND_PORT:-3000}:3000"
     environment:
-      - NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api/v1
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:8000/api/v1}
     depends_on:
       - backend
     networks:

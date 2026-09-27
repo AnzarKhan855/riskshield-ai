@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class DecisionEvaluateRequest(BaseModel):
@@ -31,9 +31,24 @@ class DecisionResponse(BaseModel):
     composite_risk_score: float
     decision_reason: str
 
-    triggered_rules: List[Dict[str, Any]]
-    triggered_policies: List[str]
+    triggered_rules: List[Dict[str, Any]] = Field(default_factory=list)
+    triggered_policies: List[str] = Field(default_factory=list)
     execution_time_ms: float
+
+    @field_validator("triggered_rules", mode="before")
+    @classmethod
+    def normalize_triggered_rules(cls, v):
+        if not v:
+            return []
+        normalized = []
+        for item in v:
+            if isinstance(item, str):
+                normalized.append({"rule_id": item, "rule_name": item})
+            elif isinstance(item, dict):
+                normalized.append(item)
+            else:
+                normalized.append({"rule_id": str(item)})
+        return normalized
 
     decision_source: str
     reviewer_id: Optional[uuid.UUID] = None

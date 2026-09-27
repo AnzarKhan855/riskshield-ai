@@ -3,6 +3,7 @@ import secrets
 from typing import Any, List, Optional, Union
 import uuid
 from app.core.exceptions import (
+    AuthorizationException,
     ConflictException,
     NotFoundException,
     ValidationException,
@@ -13,6 +14,7 @@ from app.models.merchant import (
     RiskLevel,
     VerificationStatus,
 )
+from app.models.user import UserRole
 from app.repositories.merchant_repository import MerchantRepository
 from app.repositories.user_repository import UserRepository
 from app.repositories.audit_repository import AuditLogRepository
@@ -114,6 +116,11 @@ class MerchantService:
         if not merchant:
             raise NotFoundException(f"Merchant with ID '{id}' not found.")
 
+        # Enforce tenant isolation / RBAC: only owner or Admin can update
+        user = await self.user_repo.get_by_id(updater_user_id)
+        if user and user.role != UserRole.ADMIN and merchant.owner_user_id != updater_user_id:
+            raise AuthorizationException("You do not have permission to modify this merchant profile.")
+
         update_values = data.model_dump(exclude_unset=True)
         if not update_values:
             return MerchantResponse.model_validate(merchant)
@@ -135,6 +142,11 @@ class MerchantService:
         merchant = await self.merchant_repo.get_active_by_id(id)
         if not merchant:
             raise NotFoundException(f"Merchant with ID '{id}' not found.")
+
+        # Enforce tenant isolation / RBAC: only owner or Admin can delete
+        user = await self.user_repo.get_by_id(deleter_user_id)
+        if user and user.role != UserRole.ADMIN and merchant.owner_user_id != deleter_user_id:
+            raise AuthorizationException("You do not have permission to delete this merchant profile.")
 
         await self.merchant_repo.soft_delete(merchant.id)
 

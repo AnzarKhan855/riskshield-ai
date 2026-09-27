@@ -1,0 +1,475 @@
+{
+  "suite": "Frontend Route, Link & Navigation Audit",
+  "summary": {
+    "total_pages": 41,
+    "verified_pages": 41,
+    "dead_links": 0,
+    "api_endpoints_mapped": 20
+  },
+  "pages": [
+    {
+      "route": "/forgot-password",
+      "source_file": "(auth)\\forgot-password\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/login",
+      "source_file": "(auth)\\login\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/signup",
+      "source_file": "(auth)\\signup\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/ai",
+      "source_file": "ai\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/cases/[id]",
+      "source_file": "cases\\[id]\\page.tsx",
+      "is_dynamic": true,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/cases/new",
+      "source_file": "cases\\new\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/cases",
+      "source_file": "cases\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/customers/[id]",
+      "source_file": "customers\\[id]\\page.tsx",
+      "is_dynamic": true,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/customers",
+      "source_file": "customers\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/decisions/[id]",
+      "source_file": "decisions\\[id]\\page.tsx",
+      "is_dynamic": true,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/decisions",
+      "source_file": "decisions\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/devices/[id]",
+      "source_file": "devices\\[id]\\page.tsx",
+      "is_dynamic": true,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/devices",
+      "source_file": "devices\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/explanations/[decision_id]",
+      "source_file": "explanations\\[decision_id]\\page.tsx",
+      "is_dynamic": true,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/explanations",
+      "source_file": "explanations\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/features/[transaction_id]",
+      "source_file": "features\\[transaction_id]\\page.tsx",
+      "is_dynamic": true,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/features",
+      "source_file": "features\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/graph",
+      "source_file": "graph\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/ingestion",
+      "source_file": "ingestion\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/merchants/[id]",
+      "source_file": "merchants\\[id]\\page.tsx",
+      "is_dynamic": true,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/merchants/new",
+      "source_file": "merchants\\new\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/merchants",
+      "source_file": "merchants\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/models/[id]",
+      "source_file": "models\\[id]\\page.tsx",
+      "is_dynamic": true,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/models",
+      "source_file": "models\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/models/register",
+      "source_file": "models\\register\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/notifications",
+      "source_file": "notifications\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/operations",
+      "source_file": "operations\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/orchestrator/history/[id]",
+      "source_file": "orchestrator\\history\\[id]\\page.tsx",
+      "is_dynamic": true,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/orchestrator/history",
+      "source_file": "orchestrator\\history\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/orchestrator",
+      "source_file": "orchestrator\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/",
+      "source_file": "page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/predictions/[id]",
+      "source_file": "predictions\\[id]\\page.tsx",
+      "is_dynamic": true,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/predictions",
+      "source_file": "predictions\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/profile",
+      "source_file": "profile\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/rules/[id]",
+      "source_file": "rules\\[id]\\page.tsx",
+      "is_dynamic": true,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/rules/new",
+      "source_file": "rules\\new\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/rules",
+      "source_file": "rules\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/settings",
+      "source_file": "settings\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/transactions/[id]",
+      "source_file": "transactions\\[id]\\page.tsx",
+      "is_dynamic": true,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/transactions/new",
+      "source_file": "transactions\\new\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    },
+    {
+      "route": "/transactions",
+      "source_file": "transactions\\page.tsx",
+      "is_dynamic": false,
+      "client_component": true,
+      "status": "VALID"
+    }
+  ],
+  "navigation_links": [
+    {
+      "link": "/ai",
+      "status": "VALID"
+    },
+    {
+      "link": "/ai?tab=fraud-patterns",
+      "status": "VALID"
+    },
+    {
+      "link": "/ai?tab=nl-search",
+      "status": "VALID"
+    },
+    {
+      "link": "/ai?tab=rca",
+      "status": "VALID"
+    },
+    {
+      "link": "/ai?tab=simulation",
+      "status": "VALID"
+    },
+    {
+      "link": "/cases",
+      "status": "VALID"
+    },
+    {
+      "link": "/customers",
+      "status": "VALID"
+    },
+    {
+      "link": "/decisions",
+      "status": "VALID"
+    },
+    {
+      "link": "/devices",
+      "status": "VALID"
+    },
+    {
+      "link": "/explanations",
+      "status": "VALID"
+    },
+    {
+      "link": "/features",
+      "status": "VALID"
+    },
+    {
+      "link": "/graph",
+      "status": "VALID"
+    },
+    {
+      "link": "/ingestion",
+      "status": "VALID"
+    },
+    {
+      "link": "/merchants",
+      "status": "VALID"
+    },
+    {
+      "link": "/models",
+      "status": "VALID"
+    },
+    {
+      "link": "/notifications",
+      "status": "VALID"
+    },
+    {
+      "link": "/operations",
+      "status": "VALID"
+    },
+    {
+      "link": "/orchestrator",
+      "status": "VALID"
+    },
+    {
+      "link": "/predictions",
+      "status": "VALID"
+    },
+    {
+      "link": "/profile",
+      "status": "VALID"
+    },
+    {
+      "link": "/rules",
+      "status": "VALID"
+    },
+    {
+      "link": "/settings",
+      "status": "VALID"
+    },
+    {
+      "link": "/transactions",
+      "status": "VALID"
+    }
+  ],
+  "api_client_mappings": [
+    {
+      "endpoint_pattern": "/auth/account",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/auth/forgot-password",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/auth/login",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/auth/logout",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/auth/me",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/auth/refresh",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/auth/reset-password",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/auth/signup",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/cases",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/cases/new",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/decisions",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/decisions/evaluate",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/models",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/models/promote",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/models/register",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/models/rollback",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/rules",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/rules/new",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/transactions",
+      "status": "MAPPED"
+    },
+    {
+      "endpoint_pattern": "/transactions/new",
+      "status": "MAPPED"
+    }
+  ],
+  "findings": []
+}

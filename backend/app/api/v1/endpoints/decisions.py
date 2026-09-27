@@ -1,8 +1,9 @@
 from typing import Any, Optional
 from fastapi import APIRouter, Depends, Query, status
 from app.core.deps import get_current_active_user, get_decision_engine
+from app.core.rbac import require_roles
 from app.core.response import APIResponse, success_response
-from app.models.user import User
+from app.models.user import User, UserRole
 from app.schemas.decision import (
     DecisionEvaluateRequest,
     DecisionOverrideRequest,
@@ -88,7 +89,7 @@ async def get_decision(
 async def override_decision(
     id: str,
     body: DecisionOverrideRequest,
-    current_user: User = Depends(get_current_active_user),
+    current_user: User = Depends(require_roles(UserRole.ADMIN, UserRole.ANALYST)),
     engine: DecisionEngine = Depends(get_decision_engine),
 ) -> Any:
     result = await engine.override_decision(id, body, reviewer_user_id=current_user.id)

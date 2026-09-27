@@ -73,17 +73,14 @@ class FeatureEngineeringService:
                 transaction_type=TransactionType.PAYMENT.value,
                 status=TransactionStatus.PENDING.value,
             )
-            try:
-                await self.transaction_repo.create(txn)
-            except Exception:
-                pass
 
         merchant = await self.merchant_repo.get_active_by_id(txn.merchant_id) if txn and txn.merchant_id else None
 
         customer = None
         recent_cust_txns = []
-        if txn.customer_profile_id:
-            customer = await self.customer_repo.get_active_by_id(txn.customer_profile_id)
+        cust_id = txn.customer_profile_id or txn.customer_id
+        if cust_id:
+            customer = await self.customer_repo.get_by_id_or_customer_id(cust_id)
             if customer:
                 try:
                     recent_cust_txns = await self.customer_repo.get_customer_transactions(customer.id, limit=25)
@@ -92,8 +89,9 @@ class FeatureEngineeringService:
 
         device = None
         recent_dev_txns = []
-        if txn.device_profile_id:
-            device = await self.device_repo.get_active_by_id(txn.device_profile_id)
+        dev_id = txn.device_profile_id or txn.device_id
+        if dev_id:
+            device = await self.device_repo.get_by_id_or_fingerprint(dev_id)
             if device:
                 try:
                     recent_dev_txns = await self.device_repo.get_device_transactions(device.id, limit=25)

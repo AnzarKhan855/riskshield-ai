@@ -1,0 +1,148 @@
+{
+  "suite": "Transaction Decision Ground Truth Validation",
+  "timestamp": 1790228939.7462704,
+  "dataset_size": 60,
+  "confusion_matrix": {
+    "true_positives": 30,
+    "true_negatives": 30,
+    "false_positives": 0,
+    "false_negatives": 0
+  },
+  "performance_metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "false_positive_rate": 0.0,
+    "false_negative_rate": 0.0
+  },
+  "score_distribution": {
+    "mean": 34.08,
+    "min": 22.84,
+    "max": 53.38,
+    "p50": 29.56,
+    "p95": 53.38
+  },
+  "decision_distribution": {
+    "APPROVE": 30,
+    "REVIEW": 15,
+    "BLOCK": 15,
+    "ALLOW": 0
+  },
+  "latency_profile_ms": {
+    "p50": 222.02,
+    "p95": 252.34
+  },
+  "evaluation_samples": [
+    {
+      "test_id": "TEST-NORM-000",
+      "transaction_id": "TXN-3BA64B3F",
+      "amount": 15.0,
+      "ground_truth": "NORMAL",
+      "expected_decision": "ALLOW",
+      "actual_decision": "APPROVE",
+      "composite_risk_score": 29.61,
+      "triggered_rules_count": 0,
+      "latency_ms": 237.71
+    },
+    {
+      "test_id": "TEST-NORM-001",
+      "transaction_id": "TXN-AD3108F9",
+      "amount": 27.5,
+      "ground_truth": "NORMAL",
+      "expected_decision": "ALLOW",
+      "actual_decision": "APPROVE",
+      "composite_risk_score": 29.58,
+      "triggered_rules_count": 0,
+      "latency_ms": 250.78
+    },
+    {
+      "test_id": "TEST-NORM-002",
+      "transaction_id": "TXN-AF482DD7",
+      "amount": 40.0,
+      "ground_truth": "NORMAL",
+      "expected_decision": "ALLOW",
+      "actual_decision": "APPROVE",
+      "composite_risk_score": 29.58,
+      "triggered_rules_count": 0,
+      "latency_ms": 249.61
+    },
+    {
+      "test_id": "TEST-NORM-003",
+      "transaction_id": "TXN-BEF321CF",
+      "amount": 52.5,
+      "ground_truth": "NORMAL",
+      "expected_decision": "ALLOW",
+      "actual_decision": "APPROVE",
+      "composite_risk_score": 29.57,
+      "triggered_rules_count": 0,
+      "latency_ms": 228.94
+    },
+    {
+      "test_id": "TEST-NORM-004",
+      "transaction_id": "TXN-56153C2E",
+      "amount": 65.0,
+      "ground_truth": "NORMAL",
+      "expected_decision": "ALLOW",
+      "actual_decision": "APPROVE",
+      "composite_risk_score": 29.57,
+      "triggered_rules_count": 0,
+      "latency_ms": 300.68
+    },
+    {
+      "test_id": "TEST-NORM-005",
+      "transaction_id": "TXN-6B6D1757",
+      "amount": 77.5,
+      "ground_truth": "NORMAL",
+      "expected_decision": "ALLOW",
+      "actual_decision": "APPROVE",
+      "composite_risk_score": 29.57,
+      "triggered_rules_count": 0,
+      "latency_ms": 323.42
+    },
+    {
+      "test_id": "TEST-NORM-006",
+      "transaction_id": "TXN-E56CF560",
+      "amount": 90.0,
+      "ground_truth": "NORMAL",
+      "expected_decision": "ALLOW",
+      "actual_decision": "APPROVE",
+      "composite_risk_score": 29.57,
+      "triggered_rules_count": 0,
+      "latency_ms": 242.95
+    },
+    {
+      "test_id": "TEST-NORM-007",
+      "transaction_id": "TXN-94B9755D",
+      "amount": 102.5,
+      "ground_truth": "NORMAL",
+      "expected_decision": "ALLOW",
+      "actual_decision": "APPROVE",
+      "composite_risk_score": 29.57,
+      "triggered_rules_count": 0,
+      "latency_ms": 251.3
+    },
+    {
+      "test_id": "TEST-NORM-008",
+      "transaction_id": "TXN-7086C1A8",
+      "amount": 115.0,
+      "ground_truth": "NORMAL",
+      "expected_decision": "ALLOW",
+      "actual_decision": "APPROVE",
+      "composite_risk_score": 29.57,
+      "triggered_rules_count": 0,
+      "latency_ms": 214.59
+    },
+    {
+      "test_id": "TEST-NORM-009",
+      "transaction_id": "TXN-E73DF96C",
+      "amount": 127.5,
+      "ground_truth": "NORMAL",
+      "expected_decision": "ALLOW",
+      "actual_decision": "APPROVE",
+      "composite_risk_score": 29.57,
+      "triggered_rules_count": 0,
+      "latency_ms": 204.83
+    }
+  ]
+}

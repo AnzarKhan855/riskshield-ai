@@ -6,7 +6,7 @@ import time
 from typing import Any, Dict, List, Optional
 import uuid
 
-from sqlalchemy import select, func
+from app.core.config import settings
 from app.core.exceptions import NotFoundException, ValidationException
 from app.core.llm import llm_client
 from app.models.customer import Customer
@@ -65,6 +65,28 @@ class AIIntelligenceService:
     ) -> Dict[str, Any]:
         q_lower = query.lower()
         context = context or {}
+
+        # Security Guardrail: Prompt Injection & Sensitive Data Exfiltration Detection
+        sensitive_patterns = [
+            "ignore previous instructions", "ignore all instructions",
+            "system prompt", "print secret", "database password",
+            "jwt_secret", "secret_key", "dump credentials", "reveal password",
+            "groq_api_key", "reveal api key", "exfiltrate"
+        ]
+        if any(sp in q_lower for sp in sensitive_patterns):
+            return {
+                "query": query,
+                "intent": "SECURITY_RESTRICTION",
+                "answer": "Security Policy Enforcement: RiskShield AI Copilot strictly prohibits requests attempting prompt injection, credential exposure, or exfiltration of system environment variables and secrets.",
+                "evidence": {
+                    "violation": "PROMPT_INJECTION_OR_CREDENTIAL_PROBE",
+                    "action_taken": "POLICY_REFUSAL",
+                },
+                "recommended_actions": [
+                    {"label": "Consult Risk Documentation", "action": "NAVIGATE", "target": "/operations"},
+                    {"label": "Review Access Logs", "action": "NAVIGATE", "target": "/profile"},
+                ],
+            }
 
         # 1.1 Context-aware entity inspection from payload
         if context.get("entity_type") == "TRANSACTION" and context.get("entity_id"):

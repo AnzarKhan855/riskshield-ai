@@ -1,0 +1,138 @@
+{
+  "suite": "Database Deep Audit & Integrity",
+  "timestamp": "2026-09-24T05:49:21.530316+00:00",
+  "summary": {
+    "total": 25,
+    "passed": 25,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "Table Schema: Users",
+      "status": "PASS",
+      "details": "30 records active"
+    },
+    {
+      "name": "Table Schema: Merchants",
+      "status": "PASS",
+      "details": "4 records active"
+    },
+    {
+      "name": "Table Schema: Customers",
+      "status": "PASS",
+      "details": "2 records active"
+    },
+    {
+      "name": "Table Schema: Devices",
+      "status": "PASS",
+      "details": "2 records active"
+    },
+    {
+      "name": "Table Schema: Transactions",
+      "status": "PASS",
+      "details": "2580 records active"
+    },
+    {
+      "name": "Table Schema: Decisions",
+      "status": "PASS",
+      "details": "1890 records active"
+    },
+    {
+      "name": "Table Schema: InvestigationCases",
+      "status": "PASS",
+      "details": "38 records active"
+    },
+    {
+      "name": "Table Schema: Evidence",
+      "status": "PASS",
+      "details": "73 records active"
+    },
+    {
+      "name": "Table Schema: AuditLogs",
+      "status": "PASS",
+      "details": "10352 records active"
+    },
+    {
+      "name": "Table Schema: ModelRegistry",
+      "status": "PASS",
+      "details": "5 records active"
+    },
+    {
+      "name": "FK Integrity: Transactions -> Merchants",
+      "status": "PASS",
+      "details": "0 orphan transactions found"
+    },
+    {
+      "name": "FK Integrity: Cases -> Transactions",
+      "status": "PASS",
+      "details": "0 orphan cases found"
+    },
+    {
+      "name": "FK Integrity: Evidence -> Cases",
+      "status": "PASS",
+      "details": "0 orphan evidence items found"
+    },
+    {
+      "name": "CRUD: CREATE User",
+      "status": "PASS",
+      "details": "User crud_test_c1cd0f3e@riskshield.ai created with UUID c1cd0f3e-e153-4d8a-aa1f-44ac57b72002"
+    },
+    {
+      "name": "CRUD: READ User",
+      "status": "PASS",
+      "details": "User retrieved cleanly"
+    },
+    {
+      "name": "CRUD: UPDATE User",
+      "status": "PASS",
+      "details": "User first_name updated"
+    },
+    {
+      "name": "CRUD: CREATE Merchant",
+      "status": "PASS",
+      "details": "Merchant CRD-866274 created"
+    },
+    {
+      "name": "CRUD: CREATE Transaction",
+      "status": "PASS",
+      "details": "Transaction TXN-CRD-BA7BFF created ($1250.00)"
+    },
+    {
+      "name": "CRUD: CREATE Decision",
+      "status": "PASS",
+      "details": "Decision DEC-CRD-3EF4C7 linked to TXN-CRD-BA7BFF"
+    },
+    {
+      "name": "CRUD: CREATE InvestigationCase",
+      "status": "PASS",
+      "details": "Case CASE-CRD-DE0DDF created"
+    },
+    {
+      "name": "CRUD: CREATE Evidence",
+      "status": "PASS",
+      "details": "Evidence EVD-CRD-D14466 attached to CASE-CRD-DE0DDF"
+    },
+    {
+      "name": "Relationship Trace: User -> Merchant -> Transaction -> Case -> Evidence",
+      "status": "PASS",
+      "details": "Complete 5-tier relational chain resolved cleanly in single query"
+    },
+    {
+      "name": "Unique Constraint: Duplicate transaction_id rejected",
+      "status": "PASS",
+      "details": "Duplicate insertion raised IntegrityError and was rolled back"
+    },
+    {
+      "name": "ACID Isolation: Explicit rollback purges uncommitted state",
+      "status": "PASS",
+      "details": "Ghost record does not exist in DB"
+    },
+    {
+      "name": "Concurrent Sessions: 5 parallel async commits",
+      "status": "PASS",
+      "details": "All 5 parallel writes succeeded: ['TXN-CONC-965ECC-1', 'TXN-CONC-54E88E-2', 'TXN-CONC-98FB24-3', 'TXN-CONC-E52A30-4', 'TXN-CONC-7FBEC6-5']"
+    }
+  ],
+  "relationships_verified": [],
+  "crud_operations": []
+}

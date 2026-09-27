@@ -98,6 +98,9 @@ class DecisionEngine:
             )
             comp_pred = await self.composite_repo.get_by_prediction_id(orch_resp.prediction_id)
 
+        composite_risk_score = float(comp_pred.overall_risk_score) if comp_pred else 0.0
+        composite_prediction_id = comp_pred.prediction_id if comp_pred else None
+
         # 2. Resolve Context Variables
         feature_record = await self.feature_repo.get_by_txn_id(dto.transaction_id)
         feature_payload = feature_record.feature_payload if feature_record else {}
@@ -106,7 +109,7 @@ class DecisionEngine:
 
         context_vars: Dict[str, Any] = {
             "txn_amount": float(txn_record.amount) if txn_record else 0.0,
-            "composite_risk_score": float(comp_pred.overall_risk_score) if comp_pred else 0.0,
+            "composite_risk_score": composite_risk_score,
         }
         context_vars.update(feature_payload)
 
@@ -157,14 +160,14 @@ class DecisionEngine:
 
         dec_record = Decision(
             decision_id=dec_code,
-            composite_prediction_id=comp_pred.prediction_id if comp_pred else None,
+            composite_prediction_id=composite_prediction_id,
             transaction_id=dto.transaction_id,
             merchant_id=txn_record.merchant_id if txn_record else None,
             customer_id=feature_record.customer_id if feature_record else None,
             decision=final_action,
             decision_status="FINAL",
             decision_confidence=confidence,
-            composite_risk_score=comp_pred.overall_risk_score if comp_pred else 0.0,
+            composite_risk_score=composite_risk_score,
             decision_reason=primary_reason,
             triggered_rules=triggered_rules_payload,
             triggered_policies=triggered_policies,
@@ -207,7 +210,7 @@ class DecisionEngine:
                 "transaction_id": dto.transaction_id,
                 "decision": final_action,
                 "triggered_rules_count": len(matched_rules),
-                "composite_risk_score": comp_pred.overall_risk_score if comp_pred else 0.0,
+                "composite_risk_score": composite_risk_score,
                 "execution_latency_ms": total_latency_ms,
             },
         )
@@ -230,7 +233,7 @@ class DecisionEngine:
             pass
 
         # 10. Auto-Create Investigation Case for Elevated Risk Decisions
-        risk_val = float(comp_pred.overall_risk_score) if comp_pred else 0.0
+        risk_val = composite_risk_score
         if final_action in ["BLOCK", "REVIEW", "ESCALATE"] or risk_val >= 50.0:
             try:
                 from app.repositories.investigation_repository import InvestigationRepository
@@ -246,10 +249,21 @@ class DecisionEngine:
                 evidence_repo = EvidenceRepository(session)
                 timeline_repo = TimelineRepository(session)
                 comment_repo = CommentRepository(session)
+                from app.repositories.merchant_repository import MerchantRepository
+                from app.repositories.customer_repository import CustomerRepository
+                from app.repositories.device_repository import DeviceRepository
 
-                evidence_service = EvidenceService(evidence_repo, case_repo, self.audit_repo)
-                timeline_service = TimelineService(timeline_repo, case_repo, self.audit_repo)
-                comment_service = CommentService(comment_repo, case_repo, self.audit_repo)
+                evidence_service = EvidenceService(
+                    evidence_repo=evidence_repo,
+                    transaction_repo=self.transaction_repo,
+                    merchant_repo=MerchantRepository(session),
+                    customer_repo=CustomerRepository(session),
+                    device_repo=DeviceRepository(session),
+                    feature_repo=self.feature_repo,
+                    decision_repo=self.decision_repo,
+                )
+                timeline_service = TimelineService(timeline_repo)
+                comment_service = CommentService(comment_repo)
 
                 inv_service = InvestigationService(
                     case_repo=case_repo,
@@ -263,13 +277,10 @@ class DecisionEngine:
                 case_dto = CaseCreateRequest(
                     case_title=f"Auto-Flagged: {final_action} on {dto.transaction_id}",
                     case_description=f"Transaction flagged with composite risk score {risk_val}. Rationale: {primary_reason}",
-                    case_priority="CRITICAL" if final_action == "BLOCK" else "HIGH" if risk_val >= 70.0 else "MEDIUM",
+                    priority="CRITICAL" if final_action == "BLOCK" else "HIGH" if risk_val >= 70.0 else "MEDIUM",
+                    category="Fraud",
                     transaction_id=dto.transaction_id,
                     decision_id=created_decision.decision_id,
-                    customer_id=feature_record.customer_id if feature_record else None,
-                    merchant_id=txn_record.merchant_id if txn_record else None,
-                    device_id=None,
-                    assigned_to_user_id=None,
                 )
                 await inv_service.create_case(
                     case_dto,
@@ -307,39 +318,49 @@ class DecisionEngine:
         except Exception as graph_err:
             pass
 
-        # 13. Dual-Sync Complete Decision Dossier to Cloud MongoDB Atlas
+        # 13. Dual-Sync Complete Decision Dossier to Cloud MongoDB Atlas (Non-blocking)
         try:
             from app.db.mongodb import get_mongo_db
             mongo_db = get_mongo_db()
             if mongo_db is not None:
-                await mongo_db["decisions"].insert_one({
-                    "decision_id": created_decision.decision_id,
-                    "transaction_id": dto.transaction_id,
-                    "decision": final_action,
-                    "composite_risk_score": risk_val,
-                    "decision_confidence": confidence,
-                    "decision_reason": primary_reason,
-                    "execution_time_ms": total_latency_ms,
-                    "triggered_rules": triggered_rules_payload,
-                    "triggered_policies": triggered_policies,
-                    "timestamp": time.time(),
-                })
-                await mongo_db["analytics_events"].insert_one({
-                    "event_type": "TRANSACTION_EVALUATION_COMPLETED",
-                    "decision_id": created_decision.decision_id,
-                    "transaction_id": dto.transaction_id,
-                    "action": final_action,
-                    "risk_score": risk_val,
-                    "latency_ms": total_latency_ms,
-                    "timestamp": time.time(),
-                })
-                await mongo_db["audit_logs"].insert_one({
-                    "action": "DECISION_EVALUATED",
-                    "decision_id": created_decision.decision_id,
-                    "transaction_id": dto.transaction_id,
-                    "user_id": str(evaluator_user_id),
-                    "timestamp": time.time(),
-                })
+                import asyncio
+                async def _sync_mongo_decision_dossier():
+                    try:
+                        now_ts = time.time()
+                        await asyncio.gather(
+                            mongo_db["decisions"].insert_one({
+                                "decision_id": created_decision.decision_id,
+                                "transaction_id": dto.transaction_id,
+                                "decision": final_action,
+                                "composite_risk_score": risk_val,
+                                "decision_confidence": confidence,
+                                "decision_reason": primary_reason,
+                                "execution_time_ms": total_latency_ms,
+                                "triggered_rules": triggered_rules_payload,
+                                "triggered_policies": triggered_policies,
+                                "timestamp": now_ts,
+                            }),
+                            mongo_db["analytics_events"].insert_one({
+                                "event_type": "TRANSACTION_EVALUATION_COMPLETED",
+                                "decision_id": created_decision.decision_id,
+                                "transaction_id": dto.transaction_id,
+                                "action": final_action,
+                                "risk_score": risk_val,
+                                "latency_ms": total_latency_ms,
+                                "timestamp": now_ts,
+                            }),
+                            mongo_db["audit_logs"].insert_one({
+                                "action": "DECISION_EVALUATED",
+                                "decision_id": created_decision.decision_id,
+                                "transaction_id": dto.transaction_id,
+                                "user_id": str(evaluator_user_id),
+                                "timestamp": now_ts,
+                            }),
+                            return_exceptions=True
+                        )
+                    except Exception:
+                        pass
+                asyncio.create_task(_sync_mongo_decision_dossier())
         except Exception as mongo_err:
             pass
 
