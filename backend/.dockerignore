@@ -1,0 +1,40 @@
+# Version control
+.git
+.gitignore
+
+# Environment files and credentials
+.env
+.env.*
+!.env.example
+
+# Local SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Python cache and environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+.Python
+.venv/
+env/
+venv/
+ENV/
+build/
+dist/
+wheels/
+*.egg-info/
+
+# Testing & Linting
+.pytest_cache/
+.coverage
+htmlcov/
+tests/
+scratch/
+screenshots/
+
+# Frontend
+node_modules/
+.next/

@@ -47,8 +47,10 @@ USER riskshield
 
 EXPOSE 8000
 
-# Docker Healthcheck
+# Docker Healthcheck: dynamically checks loopback on $PORT or fallback 8000
 HEALTHCHECK --interval=15s --timeout=5s --start-period=10s --retries=3 \
-  CMD curl -f http://localhost:8000/api/v1/health/liveness || exit 1
+  CMD curl -f http://127.0.0.1:${PORT:-8000}/api/v1/health/liveness || exit 1
 
-CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "main:app", "--bind", "0.0.0.0:8000"]
+# Production Entrypoint: loads gunicorn.conf.py for dynamic port ($PORT) and concurrency ($WEB_CONCURRENCY)
+CMD ["gunicorn", "-c", "gunicorn.conf.py", "main:app"]
+
